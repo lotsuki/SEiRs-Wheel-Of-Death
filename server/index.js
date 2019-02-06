@@ -6,7 +6,9 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.static(path.join(__dirname, '/client/index.html')));
-app.use(bodyParser({extended: true}));
+// For when/if we send data to client we can practice sending it in a body
+app.use(bodyParser({extended: true})); 
+// So we don't have to specify a bunch of headers
 app.use(cors());
 
 app.listen(PORT, () => {
