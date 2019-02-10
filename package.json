@@ -4,6 +4,8 @@
   "description": "A name wheel picker",
   "main": "index.js",
   "scripts": {
+    "build": "webpack -d --watch",
+    "start": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
