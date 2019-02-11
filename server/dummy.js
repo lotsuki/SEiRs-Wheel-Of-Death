@@ -7,7 +7,6 @@ const number = function() {
 
 const seedData = function() {
   var data = [];
-  var num = 1;
 
   for (let i = 0; i < 50; i++) {
     data.push({
@@ -15,7 +14,6 @@ const seedData = function() {
       lastCalled: faker.fake('{{date.past}}'),
       timesCalled: number()
     });
-    num ++;
   }
   return data;
 };

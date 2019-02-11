@@ -17,13 +17,6 @@ app.use(cors());
 
 app.get('/students', function (req, res) {
   //DB query, get all students
-  // seedData(req, res, (err, result) => {
-  //   if (err) {
-  //     res.status(501).send(err)
-  //   } else  {
-  //     res.status(200).send(result)
-  //   }
-  // });
   let studentData = seedData();
   res.send(studentData)
 });
