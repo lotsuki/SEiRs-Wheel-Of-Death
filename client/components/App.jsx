@@ -47,20 +47,12 @@ class App extends React.Component {
 
   leastPickedStudent() {
     // Fetch request, returns single student and update entry in DB?
-    // Placeholder function for dev purposes
+    // Placeholder function for dev purposes, not the most robust but it's all gonna be scrapped anyways
 
     // Since data has been sorted in fetch request, index 0 should be a student with the fewest timesCalled
     this.setState({
       picked: this.state.students[0],
-      students: update(this.state.students, {0: {timesCalled: {$set: this.state.students[0].timesCalled ++}}})
-    })
-    // Re-sort the students
-    const student = this.state.students.sort(function (a, b) {
-      return a.timesCalled - b.timesCalled;
-    })
-    // Reset the state with our newly sorted and updated students data
-    this.setState({
-      students: student
+      students: update(this.state.students, {[0]: {timesCalled: {$set: this.state.students[0].timesCalled ++}}})
     })
   }
 

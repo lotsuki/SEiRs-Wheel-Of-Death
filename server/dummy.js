@@ -6,14 +6,17 @@ const number = function() {
 };
 
 const seedData = function() {
-  var data = [];
+  let data = [];
+  let num = 1
 
   for (let i = 0; i < 50; i++) {
     data.push({
+      id: num,
       name: [faker.fake('{{name.firstName}}'), faker.fake('{{name.lastName}}')],
       lastCalled: faker.fake('{{date.past}}'),
       timesCalled: number()
     });
+    num++
   }
   return data;
 };
