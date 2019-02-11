@@ -1,6 +1,8 @@
 import React from 'react';
 import update from 'immutability-helper';
 
+import StudentCard from './StudentCard.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -8,11 +10,13 @@ class App extends React.Component {
     this.state = {
       students: [],
       picked: null,
+      view: 'home',
       isLoading: true,
       error: null,
     };
     this.pickRandomStudent = this.pickRandomStudent.bind(this);
     this.leastPickedStudent = this.leastPickedStudent.bind(this);
+    this.toggleView = this.toggleView.bind(this);
   };
 
   componentDidMount() {
@@ -34,6 +38,7 @@ class App extends React.Component {
 
   pickRandomStudent() {
     // Figure we can give John the option of just picking a random student along with picking the least called on students
+    // Using this picRandomStudent could trigger the Wheel of Death animation maybe?
     const max = this.state.students.length;
     const index = Math.floor(Math.random() * (max - 1) + 1);
     console.log("Index", index)
@@ -41,7 +46,8 @@ class App extends React.Component {
     // Set picked to the random Index, and update the # of timesCalled
     this.setState({
       picked: this.state.students[index],
-      students: update(this.state.students, {[index]: {timesCalled: {$set: this.state.students[index].timesCalled ++}}})
+      students: update(this.state.students, {[index]: {timesCalled: {$set: this.state.students[index].timesCalled ++}}}),
+      view: 'card'
     });
   }
 
@@ -52,7 +58,14 @@ class App extends React.Component {
     // Since data has been sorted in fetch request, index 0 should be a student with the fewest timesCalled
     this.setState({
       picked: this.state.students[0],
-      students: update(this.state.students, {[0]: {timesCalled: {$set: this.state.students[0].timesCalled ++}}})
+      students: update(this.state.students, {[0]: {timesCalled: {$set: this.state.students[0].timesCalled ++}}}),
+      view: 'card'
+    })
+  }
+
+  toggleView() {
+    this.setState({
+      view: 'home'
     })
   }
 
@@ -64,15 +77,21 @@ class App extends React.Component {
         </div>
       );
     }
-    return (
-      <div>Open Console/React tools for results
-        <br/>
-        <button onClick={this.pickRandomStudent}>Test Random Student</button>
-        <br/>
-        <button onClick={this.leastPickedStudent}>Test Least Picked Student</button>
-
-      </div>
-    )
+    if (this.state.view === 'home') {
+      return (
+        <div>Open Console/React tools for results
+          <button onClick={this.pickRandomStudent}>Test Random Student</button>
+          <button onClick={this.leastPickedStudent}>Test Least Picked Student</button>
+        </div>
+      )
+    }
+    if (this.state.view === 'card') {
+      return (
+        <div>
+          <StudentCard onClose={this.toggleView} data={this.state.picked}/>
+        </div>
+      )
+    }
   }
 }
 

@@ -17,7 +17,7 @@ app.use(cors());
 
 app.get('/students', function (req, res) {
   //DB query, get all students
-  let studentData = seedData();
+  const studentData = seedData();
   res.send(studentData)
 });
 
