@@ -46,14 +46,19 @@ class App extends React.Component {
   }
 
   render() {
-    return(
+    if (this.state.isLoading) {
+      return (
+        <div>
+          <img src='https://thumbs.gfycat.com/FaithfulDeafeningBullmastiff-small.gif'></img>
+        </div>
+      );
+    }
+    return (
       <div>
         <button onClick={this.pickRandomStudent}>Test Generator</button>
-        {this.state.picked}
       </div>
     )
   }
-
 }
 
 export default App;

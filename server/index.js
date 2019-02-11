@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 
+// Temp script to generate data for testing
+const { seedData } = require('./dummy.js');
+
 const app = express();
 app.use(express.static(path.join(__dirname, '../dist')));
 // For when/if we send data to client we can practice sending it in a body
@@ -11,11 +14,19 @@ app.use(bodyParser({extended: true}));
 // So we don't have to specify a bunch of headers
 app.use(cors());
 
+
 app.get('/students', function (req, res) {
   //DB query, get all students
-  let data = ["Jim", "Bob", "Bobbo", "Dean", "Gene", "Ween"] //placeholder date for testing, actual data won't be just names
-  res.send(data)
-})
+  // seedData(req, res, (err, result) => {
+  //   if (err) {
+  //     res.status(501).send(err)
+  //   } else  {
+  //     res.status(200).send(result)
+  //   }
+  // });
+  let studentData = seedData();
+  res.send(studentData)
+});
 
 app.get('/students/leastpicked', function (req, res) {
   //DB query, find one and update
