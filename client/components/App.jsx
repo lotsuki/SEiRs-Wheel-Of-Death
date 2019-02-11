@@ -3,7 +3,6 @@ import update from 'immutability-helper';
 
 import StudentCard from './StudentCard.jsx';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -41,8 +40,6 @@ class App extends React.Component {
     // Using this picRandomStudent could trigger the Wheel of Death animation maybe?
     const max = this.state.students.length;
     const index = Math.floor(Math.random() * (max - 1) + 1);
-    console.log("Index", index)
-    console.log("state ", this.state.students[index])
     // Set picked to the random Index, and update the # of timesCalled
     this.setState({
       picked: this.state.students[index],

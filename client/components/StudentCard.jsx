@@ -2,12 +2,16 @@ import React from 'react';
 
 // Set up some sort of component that pops up with student info after picking student
 
-const StudentCard = ({ isOpen, onClose, data: { id, name, profilePic, lastCalled, timesCalled }  }) => (
+const StudentCard = ({ onClose, data: { name, profilePic, lastCalled, timesCalled }  }) => (
   <div className = 'student-card'>
-    {name}
+    <div className = 'card-body'>
+      <p>{name}</p>
+      <img className = 'card-profile' src={profilePic}></img>
+      <p>Last Called: {lastCalled}</p>
+      <p>Times Called: {timesCalled}</p>
+    </div>
     <button onClick = { onClose }> Back </button>
   </div>
-
 )
 
 export default StudentCard;

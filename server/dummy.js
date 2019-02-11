@@ -12,7 +12,7 @@ const seedData = function() {
   for (let i = 0; i < 50; i++) {
     data.push({
       id: num,
-      name: [faker.fake('{{name.firstName}}'), faker.fake('{{name.lastName}}')],
+      name: [faker.fake('{{name.firstName}}'), " ", faker.fake('{{name.lastName}}')],
       profilePic: faker.fake('{{image.avatar}}'),
       lastCalled: faker.fake('{{date.past}}'),
       timesCalled: number()
