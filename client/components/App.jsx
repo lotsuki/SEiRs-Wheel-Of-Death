@@ -87,7 +87,7 @@ class App extends React.Component {
       return ( <StudentCard onClose={this.toggleView} data={this.state.picked}/> ) 
     }
     if (this.state.view === 'all') {
-      return ( <AllStudents onClose={this.toggleView} items={this.state.students}/>)
+      return ( <AllStudents onClose={this.toggleView} items={this.state.students}/> )
     }
   }
 }
