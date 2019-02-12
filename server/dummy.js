@@ -1,5 +1,10 @@
 // This file is just for simulating data until the DB is set up
+// Create dev JSON DB by running seed script
 const faker = require('faker');
+const fs = require('fs');
+const path = require('path');
+
+const seedPath = path.join(__dirname, 'dummyData.json');
 
 const number = function() {
   return Math.floor(Math.random() * 10);
@@ -12,7 +17,7 @@ const seedData = function() {
   for (let i = 0; i < 50; i++) {
     data.push({
       id: num,
-      name: [faker.fake('{{name.firstName}}'), " ", faker.fake('{{name.lastName}}')],
+      name: [faker.fake('{{name.firstName}}'), faker.fake('{{name.lastName}}')],
       profilePic: faker.fake('{{image.avatar}}'),
       lastCalled: faker.fake('{{date.past}}'),
       timesCalled: number()
@@ -22,6 +27,10 @@ const seedData = function() {
   return data;
 };
 
-module.exports = {
-  seedData
+
+const seed = () => {
+  const seeded = seedData();
+  fs.writeFileSync(seedPath, JSON.stringify(seeded));
 }
+
+seed();

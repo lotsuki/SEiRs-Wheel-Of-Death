@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack -d --watch",
     "start": "nodemon server/index.js",
+    "seed": "node server/dummy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

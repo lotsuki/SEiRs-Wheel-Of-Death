@@ -5,7 +5,7 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 
 // Temp script to generate data for testing
-const { seedData } = require('./dummy.js');
+const seedData = require('./dummyData.json');
 
 const app = express();
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -17,7 +17,7 @@ app.use(cors());
 
 app.get('/students', function (req, res) {
   //DB query, get all students
-  const studentData = seedData();
+  const studentData = seedData;
   res.send(studentData)
 });
 

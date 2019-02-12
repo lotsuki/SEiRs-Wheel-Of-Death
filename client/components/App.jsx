@@ -80,14 +80,14 @@ class App extends React.Component {
           <button onClick={this.pickRandomStudent}>Test Random Student</button>
           <button onClick={this.leastPickedStudent}>Test Least Picked Student</button>
         </div>
-      )
+      );
     }
     if (this.state.view === 'card') {
       return (
         <div>
           <StudentCard onClose={this.toggleView} data={this.state.picked}/>
         </div>
-      )
+      );
     }
   }
 }
