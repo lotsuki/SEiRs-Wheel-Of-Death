@@ -1,3 +1,3 @@
 node_modules
 prod.js
-server/dummyData.json
+DB/dummyData.json

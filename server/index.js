@@ -5,7 +5,7 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 
 // Temp script to generate data for testing
-const seedData = require('./dummyData.json');
+const seedData = require('../DB/dummyData.json');
 
 const app = express();
 app.use(express.static(path.join(__dirname, '../dist')));

@@ -4,7 +4,7 @@ const faker = require('faker');
 const fs = require('fs');
 const path = require('path');
 
-const seedPath = path.join(__dirname, 'dummyData.json');
+const seedPath = path.join(__dirname, '../DB/dummyData.json');
 
 const number = function() {
   return Math.floor(Math.random() * 10);

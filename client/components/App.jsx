@@ -2,6 +2,7 @@ import React from 'react';
 import update from 'immutability-helper';
 
 import StudentCard from './StudentCard.jsx';
+import AllStudents from './AllStudents.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends React.Component {
     this.pickRandomStudent = this.pickRandomStudent.bind(this);
     this.leastPickedStudent = this.leastPickedStudent.bind(this);
     this.toggleView = this.toggleView.bind(this);
+    this.toggleAll = this.toggleAll.bind(this);
   };
 
   componentDidMount() {
@@ -61,33 +63,31 @@ class App extends React.Component {
   }
 
   toggleView() {
-    this.setState({
-      view: 'home'
-    })
+    this.setState({ view: 'home' })
+  }
+
+  toggleAll() {
+    this.setState({ view: 'all' })
   }
 
   render() {
     if (this.state.isLoading) {
-      return (
-        <div>
-          <img src='https://thumbs.gfycat.com/FaithfulDeafeningBullmastiff-small.gif'></img>
-        </div>
-      );
+       return ( <div> <img src='https://thumbs.gfycat.com/FaithfulDeafeningBullmastiff-small.gif'></img> </div> ) 
     }
     if (this.state.view === 'home') {
       return (
-        <div>Open Console/React tools for results
+        <div>
           <button onClick={this.pickRandomStudent}>Test Random Student</button>
           <button onClick={this.leastPickedStudent}>Test Least Picked Student</button>
+          <button onClick={this.toggleAll}>Test See All Students</button>
         </div>
       );
     }
-    if (this.state.view === 'card') {
-      return (
-        <div>
-          <StudentCard onClose={this.toggleView} data={this.state.picked}/>
-        </div>
-      );
+    if (this.state.view === 'card') { 
+      return ( <StudentCard onClose={this.toggleView} data={this.state.picked}/> ) 
+    }
+    if (this.state.view === 'all') {
+      return ( <AllStudents onClose={this.toggleView} items={this.state.students}/>)
     }
   }
 }
