@@ -42,7 +42,8 @@ class App extends React.Component {
     // Using this picRandomStudent could trigger the Wheel of Death animation maybe?
     const max = this.state.students.length;
     const index = Math.floor(Math.random() * (max - 1) + 1);
-    // Set picked to the random Index, and update the # of timesCalled
+    // Set picked to the random Index, and update the # of 
+    console.log(this.state.students[index])
     this.setState({
       picked: this.state.students[index],
       students: update(this.state.students, {[index]: {timesCalled: {$set: this.state.students[index].timesCalled ++}}}),
@@ -77,9 +78,9 @@ class App extends React.Component {
     if (this.state.view === 'home') {
       return (
         <div>
-          <button onClick={this.pickRandomStudent}>Test Random Student</button>
-          <button onClick={this.leastPickedStudent}>Test Least Picked Student</button>
-          <button onClick={this.toggleAll}>Test See All Students</button>
+          <button className="btn-random" onClick={this.pickRandomStudent}>Test Random Student</button>
+          <button className="btn-least" onClick={this.leastPickedStudent}>Test Least Picked Student</button>
+          <button className="btn-all" onClick={this.toggleAll}>Test See All Students</button>
         </div>
       );
     }

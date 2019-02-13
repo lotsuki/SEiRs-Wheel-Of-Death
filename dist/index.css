@@ -2,17 +2,23 @@
   visibility: hidden;
 }
 
+
+
 .all-container {
   position: relative;
-  top: 50%;
-  bottom: 50%;
+}
 
+.btn-fixed {
+  position: fixed;
+  top: 20px;
 }
 
 .student-card {
   background-color: whitesmoke;
   padding: 0.4em;
   margin: 10px;
-  box-shadow: 0 0 5px #6A5D4F;
+  box-shadow: 0 0 3px black;
   max-width: 300px;
 }
+
+

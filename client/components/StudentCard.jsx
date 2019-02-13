@@ -6,9 +6,15 @@ const StudentCard = ({ onClose, data: { name, profilePic, lastCalled, timesCalle
   <div className = 'student-card'>
       <div className = 'card-name'>{name[0]} {name[1]}</div>
       <img className = 'card-profile' src={profilePic}></img>
-      <p>Last Called: {lastCalled}</p>
+      <p>Last Called: {new Date(lastCalled).toLocaleDateString('en-US', {
+                        weekday: 'short',
+                        day: 'numeric',
+                        month: 'short',
+                        hour: 'numeric',
+                        minute: 'numeric' 
+                      })} </p>
       <p>Times Called: {timesCalled}</p>
-    <button onClick = { onClose }> Back </button>
+    {(onClose) ? <button onClick = { onClose }> Back </button> : null}
   </div>
 )
 
