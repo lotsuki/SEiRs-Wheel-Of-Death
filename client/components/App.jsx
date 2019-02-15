@@ -2,6 +2,7 @@ import React from 'react';
 
 import StudentCard from './StudentCard.jsx';
 import AllStudents from './AllStudents.jsx';
+import Spinner from './Spinner.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -71,7 +72,7 @@ class App extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-       return ( <div> <img src='https://thumbs.gfycat.com/FaithfulDeafeningBullmastiff-small.gif'></img> </div> ) 
+      return ( <Spinner /> ) 
     }
     if (this.state.view === 'home') {
       return (
@@ -97,4 +98,5 @@ export default App;
 
 /*
 Notes: http://wheelnavjs.softwaretailoring.net/index.html
+
 */

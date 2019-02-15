@@ -40,12 +40,13 @@
     "enzyme-adapter-react-16": "^1.9.1",
     "faker": "^4.1.0",
     "jest": "^24.1.0",
-    "jest-cli": "^24.1.0"
+    "jest-cli": "^24.1.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "jest": {
     "verbose": true,
     "setupFilesAfterEnv": [
-      "<rootDir>/client/components/tests/setupTests.js"
+      "<rootDir>/setupTests.js"
     ]
   }
 }
