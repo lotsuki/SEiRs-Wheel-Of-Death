@@ -1,5 +1,4 @@
 import React from 'react';
-import update from 'immutability-helper';
 
 import StudentCard from './StudentCard.jsx';
 import AllStudents from './AllStudents.jsx';
@@ -35,6 +34,7 @@ class App extends React.Component {
     })
     .catch(error => this.setState({ error, isLoading: false })
     );
+
   }
 
   pickRandomStudent() {
@@ -46,7 +46,6 @@ class App extends React.Component {
     console.log(this.state.students[index])
     this.setState({
       picked: this.state.students[index],
-      students: update(this.state.students, {[index]: {timesCalled: {$set: this.state.students[index].timesCalled ++}}}),
       view: 'card'
     });
   }
@@ -58,7 +57,6 @@ class App extends React.Component {
     // Since data has been sorted in fetch request, index 0 should be a student with the fewest timesCalled
     this.setState({
       picked: this.state.students[0],
-      students: update(this.state.students, {[0]: {timesCalled: {$set: this.state.students[0].timesCalled ++}}}),
       view: 'card'
     })
   }
@@ -94,3 +92,9 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+
+/*
+Notes: http://wheelnavjs.softwaretailoring.net/index.html
+*/

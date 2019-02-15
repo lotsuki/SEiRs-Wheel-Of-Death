@@ -7,7 +7,7 @@
     "build": "webpack -d --watch",
     "start": "nodemon server/index.js",
     "seed": "node server/dummy.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -28,11 +28,18 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "faker": "^4.1.0",
-    "immutability-helper": "^3.0.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "webpack": "^4.29.2",
     "webpack-cli": "^3.2.3"
+  },
+  "devDependencies": {
+    "babel-jest": "^24.1.0",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
+    "faker": "^4.1.0",
+    "jest": "^24.1.0",
+    "jest-cli": "^24.1.0"
   }
 }
