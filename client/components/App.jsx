@@ -66,18 +66,26 @@ class App extends React.Component {
   }
 
   nextTenStudents() {
+    if (this.state.studentsToShow > this.state.students.length) {
+      // I am open to better options than this alert box lol
+      alert('No more students!')
+    } else {
     this.setState({ studentsToShow: this.state.studentsToShow + 10 });
+    }
   }
 
   toggleView() {
-    this.setState({ view: 'home' });
+    this.setState({ 
+      view: 'home',
+      studentsToShow: 10
+    });
   }
 
   toggleAll() {
     this.setState({ view: 'all' });
   }
 
-
+  // Could move the buttons into their own component for more modularity?
   render() {
     if (this.state.isLoading) {
       return ( <Spinner /> ) 

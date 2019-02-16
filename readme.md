@@ -12,7 +12,7 @@
 2. General
 - [ ] CSS Styling, general flair
 - [ ] Write more tests!
-- [ ] 
+- [ ] Set up CircleCI integration
 
 3. Optional Front End To Do
 - [ ] Add tap to confirm call on student (increment timesCalled counter)

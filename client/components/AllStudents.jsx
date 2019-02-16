@@ -12,10 +12,14 @@ import StudentCard from './StudentCard.jsx';
 
 const AllStudents = ({ items, onClose, next }) => (
   <div className = "all-container">
-    <button className="btn-fixed" onClick={onClose}>Back</button> 
+    <select className="select" > 
+      <option value="name">Name</option>
+      <option value="lastCalled">Date Last Called</option>
+      <option value="timesCalled">Total Times Called</option>
+    </select>
+    <button className="btn-fixed" onClick={onClose}>Home</button> 
       {items.map(item => <StudentCard data={item} key={item.id}/> )}
-    <button className="btn-next" onClick={next}>Next</button>
-
+    <button className="btn-next" onClick={next}>Show Next 10</button>
   </div>
 );
 
@@ -27,6 +31,7 @@ AllStudents.propTypes = {
     lastCalled: propTypes.string.isRequired,
     timesCalled: propTypes.number.isRequired
   })),
+  next: propTypes.func,
   onClose: propTypes.func
 };
 
