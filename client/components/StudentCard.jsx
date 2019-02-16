@@ -18,7 +18,7 @@ const StudentCard = ({ onClose, data: { name, profilePic, lastCalled, timesCalle
       <p>Times Called: {timesCalled}</p>
     {(onClose) ? <button onClick = { onClose }> Back </button> : null}
   </div>
-)
+);
 
 StudentCard.propTypes = {
   data: propTypes.shape({
@@ -28,6 +28,6 @@ StudentCard.propTypes = {
     timesCalled: propTypes.number.isRequired
   }),
   onClose: propTypes.func
-}
+};
 
 export default StudentCard;

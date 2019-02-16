@@ -10,7 +10,7 @@ import dummyData from '../../../DB/dummyData.json';
 describe('App Component', () => {
   const wrapper = render(<App />);
   it('Should render and match Snapshot', () => {
-      expect(wrapper).toMatchSnapshot()
+      expect(wrapper).toMatchSnapshot();
     });
 
   it('Should not render anything besides the Spinner while isLoading state is active', () => {
@@ -22,7 +22,7 @@ describe('App Component', () => {
     const shallowWrapper = shallow(<App />, {disableLifecycleMethods: true});
     shallowWrapper.setState({
       isLoading: false
-    });
+    })
     expect(shallowWrapper.find('button').length).toEqual(3);
   });
 });
@@ -34,7 +34,7 @@ const properKeys = {
   profilePic: expect.any(String),
   lastCalled: expect.any(String),
   timesCalled: expect.any(Number)
-}
+};
 
 describe('Random Student Button', () => {
   const appComponent = shallow(<App />, {disableLifecycleMethods: true});
@@ -76,5 +76,5 @@ describe('All Students Button', () => {
     appComponent.update()
     
     expect(appComponent.state().view).toEqual('all');
-  })
+  });
 });

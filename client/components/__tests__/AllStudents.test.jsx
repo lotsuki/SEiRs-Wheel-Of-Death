@@ -8,5 +8,5 @@ describe('All Students Component', () => {
   it('should render a floating back button', () => {
     const wrapper = render(<AllStudents items={dummyData}/>)
     expect(wrapper.find('.btn-fixed').length).toEqual(1);
-  })
-})
+  });
+});

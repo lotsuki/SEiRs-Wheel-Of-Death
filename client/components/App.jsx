@@ -90,7 +90,7 @@ class App extends React.Component {
       return ( <AllStudents onClose={this.toggleView} items={this.state.students}/> )
     }
   }
-}
+};
 
 export default App;
 

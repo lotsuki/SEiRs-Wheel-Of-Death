@@ -3,15 +3,19 @@ import propTypes from 'prop-types';
 import StudentCard from './StudentCard.jsx';
 
 // Component to display all student data to be scrolled through
-// Maybe allow for manual editing of student data?
 // Could also allow for manual selection of students? Doubt it would ever be used, but it'd be nice to have the option I guess.
+
+// To Do:
+// Need to limit # of students shown per page, showing 50+ is an expensive operation (400ms render time is too long)
+// Implement filtering/sorting options
+// Build search component?
 
 const AllStudents = ({ items, onClose }) => (
   <div className = "all-container">
     <button className="btn-fixed" onClick={onClose}>Back</button> 
       {items.map(item => <StudentCard data={item} key={item.id}/> )}
   </div>
-)
+);
 
 AllStudents.propTypes = {
   items: propTypes.arrayOf(propTypes.shape({
@@ -22,6 +26,6 @@ AllStudents.propTypes = {
     timesCalled: propTypes.number.isRequired
   })),
   onClose: propTypes.func.isRequired
-}
+};
 
 export default AllStudents

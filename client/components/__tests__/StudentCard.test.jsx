@@ -14,12 +14,13 @@ describe('Student Card Component', () => {
     expect(wrapper.find('img').length).toEqual(1);
     expect(wrapper.find('p').length).toEqual(2);
     expect(wrapper.find('button').length).toEqual(1);
-  })
+  });
+
   it('Should NOT render a button when onClose is not passed in', () => {
     const wrapper = render(<StudentCard data={pickedStudent}/>)
     expect(wrapper.find('div').length).toEqual(1);
     expect(wrapper.find('img').length).toEqual(1);
     expect(wrapper.find('p').length).toEqual(2);
     expect(wrapper.find('button').length).toEqual(0);
-  })
-})
+  });
+});
