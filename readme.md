@@ -1,7 +1,8 @@
-#SEiR Wheel of Death
+# SEiR Wheel of Death
 
-###To Do:
-####Front End
+## To Do:
+
+#### Front End
 1. All Students Page
 - Limit # of student cards rendered when loading
 - Implement pagination
@@ -18,7 +19,7 @@
 - Wheel animation
 
 
-####Back End
+#### Back End
 - Build out DB (redis)
 - Add API routes for patch/update
 - Add method for uploading .csv/.tsv files to populate DB with new class
