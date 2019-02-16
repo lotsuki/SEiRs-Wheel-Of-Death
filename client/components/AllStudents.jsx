@@ -10,10 +10,12 @@ import StudentCard from './StudentCard.jsx';
 // Implement filtering/sorting options
 // Build search component?
 
-const AllStudents = ({ items, onClose }) => (
+const AllStudents = ({ items, onClose, next }) => (
   <div className = "all-container">
     <button className="btn-fixed" onClick={onClose}>Back</button> 
       {items.map(item => <StudentCard data={item} key={item.id}/> )}
+    <button className="btn-next" onClick={next}>Next</button>
+
   </div>
 );
 

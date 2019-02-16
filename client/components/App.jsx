@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = {
       students: [],
       picked: null,
+      studentsToShow: [],
       view: 'home',
       isLoading: true,
       error: null,
@@ -18,6 +19,7 @@ class App extends React.Component {
     this.leastPickedStudent = this.leastPickedStudent.bind(this);
     this.toggleView = this.toggleView.bind(this);
     this.toggleAll = this.toggleAll.bind(this);
+    this.nextTenStudents = this.nextTenStudents.bind(this);
   };
 
   componentDidMount() {
@@ -30,6 +32,7 @@ class App extends React.Component {
       });
       this.setState({
         students: data,
+        studentsToShow: 10,
         isLoading: false
       })
     })
@@ -62,13 +65,18 @@ class App extends React.Component {
     })
   }
 
+  nextTenStudents() {
+    this.setState({ studentsToShow: this.state.studentsToShow + 10 });
+  }
+
   toggleView() {
-    this.setState({ view: 'home' })
+    this.setState({ view: 'home' });
   }
 
   toggleAll() {
-    this.setState({ view: 'all' })
+    this.setState({ view: 'all' });
   }
+
 
   render() {
     if (this.state.isLoading) {
@@ -87,7 +95,7 @@ class App extends React.Component {
       return ( <StudentCard onClose={this.toggleView} data={this.state.picked}/> ) 
     }
     if (this.state.view === 'all') {
-      return ( <AllStudents onClose={this.toggleView} items={this.state.students}/> )
+      return ( <AllStudents onClose={this.toggleView} items={this.state.students.slice(0, this.state.studentsToShow)} next={this.nextTenStudents}/> )
     }
   }
 };

@@ -16,6 +16,7 @@ describe('App Component', () => {
   it('Should not render anything besides the Spinner while isLoading state is active', () => {
     expect(wrapper.find('img').length).toEqual(1);
     expect(wrapper.find('button').length).toEqual(0);
+    expect(wrapper.find('div').length).toEqual(0);
   });
 
   it('Should render 3 buttons after loading', () => {
