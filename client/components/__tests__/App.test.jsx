@@ -16,11 +16,24 @@ describe('App Component', () => {
     expect(wrapper.find('button').length).toEqual(0);
   })
   it('Should render 3 buttons after loading', () => {
-    const shallowWrapper = shallow(<App />)
+    const shallowWrapper = shallow(<App />, {disableLifecycleMethods: true});
     shallowWrapper.setState({
       isLoading: false
     });
     expect(shallowWrapper.find('button').length).toEqual(3);
+  })
+});
+
+describe('Buttons should render student profiles', () => {
+  it('Test click event', () => {
+    const appComponent = shallow(<App />, {disableLifecycleMethods: true});
+    appComponent.setState({
+      isLoading: false,
+      students: dummyData
+    })
+    appComponent.find('.btn-random').simulate('click');
+    appComponent.update()
+    expect(appComponent.state().picked).not.toBeNull();
   })
 });
 

@@ -44,7 +44,7 @@ class App extends React.Component {
     const max = this.state.students.length;
     const index = Math.floor(Math.random() * (max - 1) + 1);
     // Set picked to the random Index, and update the # of 
-    console.log(this.state.students[index])
+    // console.log(this.state.students[index])
     this.setState({
       picked: this.state.students[index],
       view: 'card'
@@ -77,7 +77,7 @@ class App extends React.Component {
     if (this.state.view === 'home') {
       return (
         <div>
-          <button className="btn-random" onClick={this.pickRandomStudent}>Test Random Student</button>
+          <button id="btn-random" className="btn-random" onClick={this.pickRandomStudent}>Test Random Student</button>
           <button className="btn-least" onClick={this.leastPickedStudent}>Test Least Picked Student</button>
           <button className="btn-all" onClick={this.toggleAll}>Test See All Students</button>
         </div>

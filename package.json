@@ -7,7 +7,8 @@
     "build": "webpack -d --watch",
     "start": "nodemon server/index.js",
     "seed": "node server/dummy.js",
-    "test": "jest"
+    "test": "jest",
+    "testc": "jest --coverage --collectCoverageFrom=src/**/*.{js,jsx}"
   },
   "repository": {
     "type": "git",
