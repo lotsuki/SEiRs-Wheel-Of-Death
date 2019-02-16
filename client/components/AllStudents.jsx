@@ -25,7 +25,7 @@ AllStudents.propTypes = {
     lastCalled: propTypes.string.isRequired,
     timesCalled: propTypes.number.isRequired
   })),
-  onClose: propTypes.func.isRequired
+  onClose: propTypes.func
 };
 
 export default AllStudents

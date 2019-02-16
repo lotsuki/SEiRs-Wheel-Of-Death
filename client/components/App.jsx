@@ -77,7 +77,7 @@ class App extends React.Component {
     if (this.state.view === 'home') {
       return (
         <div>
-          <button id="btn-random" className="btn-random" onClick={this.pickRandomStudent}>Test Random Student</button>
+          <button className="btn-random" onClick={this.pickRandomStudent}>Test Random Student</button>
           <button className="btn-least" onClick={this.leastPickedStudent}>Test Least Picked Student</button>
           <button className="btn-all" onClick={this.toggleAll}>Test See All Students</button>
         </div>

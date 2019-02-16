@@ -11,7 +11,7 @@ describe('App Component', () => {
   const wrapper = render(<App />);
   it('Should render and match Snapshot', () => {
       expect(wrapper).toMatchSnapshot();
-    });
+  });
 
   it('Should not render anything besides the Spinner while isLoading state is active', () => {
     expect(wrapper.find('img').length).toEqual(1);
