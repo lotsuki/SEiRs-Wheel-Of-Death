@@ -65,6 +65,7 @@ describe('Least Picked Student Button', () => {
   });
 });
 
+
 describe('All Students Button', () => {
   it('Should update state', () => {
     const appComponent = shallow(<App />, {disableLifecycleMethods: true});

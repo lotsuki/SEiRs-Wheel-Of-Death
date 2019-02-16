@@ -1,6 +1,6 @@
 import React from 'react';
-
-import StudentCard from './StudentCard.jsx'
+import propTypes from 'prop-types';
+import StudentCard from './StudentCard.jsx';
 
 // Component to display all student data to be scrolled through
 // Maybe allow for manual editing of student data?
@@ -12,5 +12,16 @@ const AllStudents = ({ items, onClose }) => (
       {items.map(item => <StudentCard data={item} key={item.id}/> )}
   </div>
 )
+
+AllStudents.propTypes = {
+  items: propTypes.arrayOf(propTypes.shape({
+    id: propTypes.number.isRequired,
+    name: propTypes.array.isRequired,
+    profilePic: propTypes.string.isRequired,
+    lastCalled: propTypes.string.isRequired,
+    timesCalled: propTypes.number.isRequired
+  })),
+  onClose: propTypes.func.isRequired
+}
 
 export default AllStudents
