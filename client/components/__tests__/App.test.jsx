@@ -28,42 +28,52 @@ describe('App Component', () => {
 });
 
 
+const properKeys = {
+  id: expect.any(Number),
+  name: expect.any(Array),
+  profilePic: expect.any(String),
+  lastCalled: expect.any(String),
+  timesCalled: expect.any(Number)
+}
+
 describe('Random Student Button', () => {
+  const appComponent = shallow(<App />, {disableLifecycleMethods: true});
+  appComponent.setState({
+    isLoading: false,
+    students: dummyData
+  })
+
   it('Should update state with an object containing the proper keys', () => {
-    const appComponent = shallow(<App />, {disableLifecycleMethods: true});
-    appComponent.setState({
-      isLoading: false,
-      students: dummyData
-    })
     appComponent.find('.btn-random').simulate('click');
     appComponent.update();
-
-    expect(appComponent.state().picked).toEqual(expect.objectContaining({
-      id: expect.any(Number),
-      name: expect.any(Array),
-      profilePic: expect.any(String),
-      lastCalled: expect.any(String),
-      timesCalled: expect.any(Number)
-    }));
+    expect(appComponent.state().picked).toEqual(expect.objectContaining(properKeys));
   });
 });
 
 
+describe('Least Picked Student Button', () => {
+  const appComponent = shallow(<App />, {disableLifecycleMethods: true});
+  appComponent.setState({
+    isLoading: false,
+    students: dummyData
+  })
 
-/*
-{"id":1,"name":["Mellie","Gibson"],"profilePic":"https://s3.amazonaws.com/uifaces/faces/twitter/matbeedotcom/128.jpg",
-"lastCalled":"Wed Jan 09 2019 16:58:10 GMT-0800 (Pacific Standard Time)","timesCalled":6}
-*/
+  it('Should update state with an object containing the proper keys', () => {
+    appComponent.find('.btn-least').simulate('click');
+    appComponent.update(); 
+    expect(appComponent.state().picked).toEqual(expect.objectContaining(properKeys));
+  });
+});
 
-
-// This test still runs, but it doesn't pass because ComponentDidMount isn't being fired.
-// Passes without the componentDidMount line
-// describe('Render page after loading', () => {  
-//   it('Should render three buttons after componentDidMount fires', async () => {
-//     const props = { fetchData: Promise.resolve('data') };
-//     const shallowWrapper = shallow(<App {...props}/>);
-//    //  shallowWrapper.instance().componentDidMount();
-//     await props.fetchData;
-//     expect(shallowWrapper.find('button').length).toEqual(3);
-//   })
-// });
+describe('All Students Button', () => {
+  it('Should update state', () => {
+    const appComponent = shallow(<App />, {disableLifecycleMethods: true});
+    appComponent.setState({
+      isLoading: false
+    })
+    appComponent.find('.btn-all').simulate('click');
+    appComponent.update()
+    
+    expect(appComponent.state().view).toEqual('all');
+  })
+});
