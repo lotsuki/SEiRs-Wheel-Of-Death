@@ -9,5 +9,4 @@ describe('All Students Component', () => {
     const wrapper = render(<AllStudents items={dummyData}/>)
     expect(wrapper.find('.btn-fixed').length).toEqual(1);
   })
-  it('should ')
 })

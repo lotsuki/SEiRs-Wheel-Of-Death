@@ -9,7 +9,7 @@ import StudentCard from './StudentCard.jsx'
 const AllStudents = ({ items, onClose }) => (
   <div className = "all-container">
     <button className="btn-fixed" onClick={onClose}>Back</button> 
-      {items.map(item => <StudentCard data={item}/> )}
+      {items.map(item => <StudentCard data={item} key={item.id}/> )}
   </div>
 )
 
