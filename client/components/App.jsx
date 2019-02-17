@@ -30,11 +30,9 @@ class App extends React.Component {
     .then(response => response.json())
     .then(data => {
       data.forEach((student) => {
-        return student.name = student.name[0] + " " + student.name[1];
-      })
-      data.forEach((student) => {
+        student.name = student.name[0] + " " + student.name[1];
         if (!student["profilePic"]) {
-          return student["profilePic"] = replacementPic;
+          student["profilePic"] = replacementPic;
       }})
       this.setState({
         students: data,
