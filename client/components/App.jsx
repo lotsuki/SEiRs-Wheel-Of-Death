@@ -119,7 +119,7 @@ class App extends React.Component {
       return ( <StudentCard onClose={this.toggleView} data={this.state.picked}/> ) 
     }
     if (this.state.view === 'all') {
-      return ( <AllStudents onClose={this.toggleView} search={this.searchStudents} items={this.state.filteredStudents.slice(0, this.state.studentsToShow)} next={this.nextTenStudents}/> )
+      return ( <AllStudents onClose={this.toggleView} search={this.searchStudents} next={this.nextTenStudents} items={this.state.filteredStudents.slice(0, this.state.studentsToShow)}/> )
     }
   }
 };

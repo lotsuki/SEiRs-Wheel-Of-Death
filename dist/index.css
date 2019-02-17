@@ -6,11 +6,17 @@
 
 .all-container {
   position: relative;
+  top: 70px;
 }
 
 .btn-fixed {
   position: fixed;
   top: 20px;
+}
+
+.search-form {
+  position: fixed;
+  top: 50px;
 }
 
 .student-card {

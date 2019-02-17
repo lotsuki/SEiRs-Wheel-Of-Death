@@ -1,7 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import StudentCard from './StudentCard.jsx';
-import Search from './Search.jsx'
+import Search from './Search.jsx';
+import SortSelector from './SortSelector.jsx';
 
 // Component to display all student data to be scrolled through
 // Could also allow for manual selection of students? Doubt it would ever be used, but it'd be nice to have the option I guess.
@@ -13,8 +14,11 @@ import Search from './Search.jsx'
 
 const AllStudents = ({ search, onClose, items, next }) => (
   <div className = "all-container">
-    <Search search={search}/>
-    <button className="btn-fixed" onClick={onClose}>Home</button> 
+    <div className = "floating-container">
+      <Search search={search}/>
+      <button className="btn-fixed" onClick={onClose}>Home</button> 
+    </div>
+    <SortSelector />
       {items.map(item => <StudentCard data={item} key={item.id}/> )}
     <button className="btn-next" onClick={next}>Show Next 10</button>
   </div>
