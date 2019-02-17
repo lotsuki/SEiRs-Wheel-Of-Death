@@ -33,7 +33,7 @@ class App extends React.Component {
         return a.timesCalled - b.timesCalled;
       })
       data.forEach(function (student) {
-        student.name = student.name[0] + " " + student.name[1];
+        return student.name = student.name[0] + " " + student.name[1];
       })
       this.setState({
         students: data,
@@ -83,7 +83,7 @@ class App extends React.Component {
     this.setState({ 
       view: 'home',
       studentsToShow: 10,
-      filteredStudents: students
+      filteredStudents: this.state.students
     });
   }
 

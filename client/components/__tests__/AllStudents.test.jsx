@@ -36,6 +36,7 @@ describe('Next Button', () => {
     const appComponent = mount(<App />, {disableLifecycleMethods: true});
     appComponent.setState({
       isLoading: false,
+      students: dummyData,
       studentsToShow: 10,
       view: 'all'
     })
