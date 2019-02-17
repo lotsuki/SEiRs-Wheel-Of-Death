@@ -1,4 +1,5 @@
 import React from 'react';
+import { animateScroll as scroll } from 'react-scroll'
 
 import StudentCard from './StudentCard.jsx';
 import AllStudents from './AllStudents.jsx';
@@ -22,6 +23,7 @@ class App extends React.Component {
     this.viewAll = this.viewAll.bind(this);
     this.nextTenStudents = this.nextTenStudents.bind(this);
     this.searchStudents = this.searchStudents.bind(this);
+    this.scrollToTop = this.scrollToTop.bind(this);
   };
 
   componentDidMount() {
@@ -29,10 +31,10 @@ class App extends React.Component {
     fetch('/students')
     .then(response => response.json())
     .then(data => {
-      data.sort(function (a, b) {
+      data.sort((a, b) => {
         return a.timesCalled - b.timesCalled;
       })
-      data.forEach(function (student) {
+      data.forEach((student) => {
         return student.name = student.name[0] + " " + student.name[1];
       })
       this.setState({
@@ -52,7 +54,6 @@ class App extends React.Component {
     const max = this.state.students.length;
     const index = Math.floor(Math.random() * (max - 1) + 1);
     // Set picked to the random Index, and update the # of 
-    // console.log(this.state.students[index])
     this.setState({
       picked: this.state.students[index],
       view: 'card'
@@ -70,25 +71,32 @@ class App extends React.Component {
     })
   }
 
-  // Load up the next 10 students when viewing All Students
+  // Load up the next 10 students when viewing All Students -- may consider adding prevTenStudents functionality
   nextTenStudents() {
     if (this.state.studentsToShow > this.state.students.length) {
       // I am open to better options than this alert box lol
-      alert('No more students!')
+      alert('Stop clicking, there are no more students!');
     } else {
     this.setState({ studentsToShow: this.state.studentsToShow + 10 });
+    this.scrollToTop();
     }
   }
 
+  scrollToTop() {
+    scroll.scrollToTop({duration: 500});
+  }
+
+  // viewHome resets everything
   viewHome() {
     this.setState({ 
       view: 'home',
       picked: null,
-      studentsToShow: 10,
+      studentsToShow: 0,
       filteredStudents: this.state.students
     });
   }
 
+  // Renders AllStudents component
   viewAll() {
     this.setState({ view: 'all' });
   }
@@ -104,6 +112,7 @@ class App extends React.Component {
   }
 
   // Could move the buttons into their own component for more modularity?
+  // Replace or CSS buttons to make this part of the app more visually pleasing
   render() {
     if (this.state.isLoading) {
       return ( <Spinner /> ) 

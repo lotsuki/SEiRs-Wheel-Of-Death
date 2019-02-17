@@ -9,9 +9,7 @@ import SortSelector from './SortSelector.jsx';
 // Could also allow for manual selection of students? Doubt it would ever be used, but it'd be nice to have the option I guess.
 
 // To Do:
-// Need to limit # of students shown per page, showing 50+ is an expensive operation (400ms render time is too long)
-// Implement filtering/sorting options
-// Build search component?
+//Should make everything in floating container into it's own component
 
 const AllStudents = ({ search, onClose, items, next }) => (
   <div className = "all-container">

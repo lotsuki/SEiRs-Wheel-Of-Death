@@ -17,6 +17,8 @@
   height: 70px;
   width: 335px;
   top: 10px;
+  box-shadow: 0 0 3px black;
+
 }
 
 .btn-fixed {
@@ -26,7 +28,7 @@
   font-size: x-large;
 }
 .btn-fixed:hover {
-  border-color:#7a7a7a;
+  outline: auto;
 }
 
 .btn-next {
@@ -34,6 +36,9 @@
   top: 32px;
   left: 311px;
   font-size: x-large;
+}
+.btn-next:hover {
+  outline: auto;
 }
 
 .search-form {
