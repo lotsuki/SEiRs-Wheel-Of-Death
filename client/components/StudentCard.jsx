@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 
 const StudentCard = ({ onClose, data: { name, profilePic, lastCalled, timesCalled }  }) => (
   <div className = 'student-card'>
-      <div className = 'card-name'>{name[0]} {name[1]}</div>
+      <div className = 'card-name'>{name}</div>
       <img className = 'card-profile' src={profilePic}></img>
       <p>Last Called: {new Date(lastCalled).toLocaleDateString('en-US', {
                         weekday: 'short',
@@ -22,7 +22,7 @@ const StudentCard = ({ onClose, data: { name, profilePic, lastCalled, timesCalle
 
 StudentCard.propTypes = {
   data: propTypes.shape({
-    name: propTypes.array.isRequired,
+    name: propTypes.string.isRequired,
     profilePic: propTypes.string.isRequired,
     lastCalled: propTypes.string.isRequired,
     timesCalled: propTypes.number.isRequired

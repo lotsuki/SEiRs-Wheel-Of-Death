@@ -10,7 +10,8 @@ class App extends React.Component {
     this.state = {
       students: [],
       picked: null,
-      studentsToShow: [],
+      studentsToShow: 10,
+      filteredStudents: [],
       view: 'home',
       isLoading: true,
       error: null,
@@ -20,6 +21,7 @@ class App extends React.Component {
     this.toggleView = this.toggleView.bind(this);
     this.toggleAll = this.toggleAll.bind(this);
     this.nextTenStudents = this.nextTenStudents.bind(this);
+    this.searchStudents = this.searchStudents.bind(this);
   };
 
   componentDidMount() {
@@ -29,10 +31,13 @@ class App extends React.Component {
     .then(data => {
       data.sort(function (a, b) {
         return a.timesCalled - b.timesCalled;
-      });
+      })
+      data.forEach(function (student) {
+        student.name = student.name[0] + " " + student.name[1];
+      })
       this.setState({
         students: data,
-        studentsToShow: 10,
+        filteredStudents: data,
         isLoading: false
       })
     })
@@ -77,12 +82,23 @@ class App extends React.Component {
   toggleView() {
     this.setState({ 
       view: 'home',
-      studentsToShow: 10
+      studentsToShow: 10,
+      filteredStudents: students
     });
   }
 
   toggleAll() {
     this.setState({ view: 'all' });
+  }
+
+  searchStudents(event) {
+    let query = event.target.value;
+    let searchResults = this.state.students.filter(studentObj => {
+      return studentObj.name.toLowerCase().includes(query.toLowerCase())
+    })
+    this.setState({
+      filteredStudents: searchResults
+    });
   }
 
   // Could move the buttons into their own component for more modularity?
@@ -103,7 +119,7 @@ class App extends React.Component {
       return ( <StudentCard onClose={this.toggleView} data={this.state.picked}/> ) 
     }
     if (this.state.view === 'all') {
-      return ( <AllStudents onClose={this.toggleView} items={this.state.students.slice(0, this.state.studentsToShow)} next={this.nextTenStudents}/> )
+      return ( <AllStudents onClose={this.toggleView} search={this.searchStudents} items={this.state.filteredStudents.slice(0, this.state.studentsToShow)} next={this.nextTenStudents}/> )
     }
   }
 };
