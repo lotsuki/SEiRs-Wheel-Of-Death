@@ -1,5 +1,19 @@
 # SEiR Wheel of Death
 
+Getting up to speed to work on this:
+1. npm install - install all dependencies (note, if you don't have nodemon globally installed you'll need to add it)
+2. npm run seed - generate dummyData.json file for dev purposes
+3. npm run build
+4. npm run start
+5. http://localhost:3000
+
+I've set up 3 options so far, pick a random student, pick the least called on student, and view all students.
+These functions are basic and will need to be retooled, they're largely placeholders till we build out the back end.
+
+Server has one route set up, it fetches data from the generated dummyData.json file. See dummy.js in /server if you want to see how it works. 
+
+The fetch request on the client side sorts the data and stores it in state. From there you can explore the app.
+
 ## To Do:
 
 #### Front End
@@ -7,7 +21,7 @@
 - [x] Limit # of student cards rendered when loading
 - [x] Implement pagination 
 - [ ] Add sort/filter options
-- [ ] Build search component to search for specific students
+- [x] Build search component to search for specific students
 
 2. General
 - [ ] CSS Styling, general flair

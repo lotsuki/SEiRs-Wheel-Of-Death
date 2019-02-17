@@ -18,8 +18,8 @@ class App extends React.Component {
     };
     this.pickRandomStudent = this.pickRandomStudent.bind(this);
     this.leastPickedStudent = this.leastPickedStudent.bind(this);
-    this.toggleView = this.toggleView.bind(this);
-    this.toggleAll = this.toggleAll.bind(this);
+    this.viewHome = this.viewHome.bind(this);
+    this.viewAll = this.viewAll.bind(this);
     this.nextTenStudents = this.nextTenStudents.bind(this);
     this.searchStudents = this.searchStudents.bind(this);
   };
@@ -70,6 +70,7 @@ class App extends React.Component {
     })
   }
 
+  // Load up the next 10 students when viewing All Students
   nextTenStudents() {
     if (this.state.studentsToShow > this.state.students.length) {
       // I am open to better options than this alert box lol
@@ -79,15 +80,16 @@ class App extends React.Component {
     }
   }
 
-  toggleView() {
+  viewHome() {
     this.setState({ 
       view: 'home',
+      picked: null,
       studentsToShow: 10,
       filteredStudents: this.state.students
     });
   }
 
-  toggleAll() {
+  viewAll() {
     this.setState({ view: 'all' });
   }
 
@@ -111,15 +113,15 @@ class App extends React.Component {
         <div>
           <button className="btn-random" onClick={this.pickRandomStudent}>Test Random Student</button>
           <button className="btn-least" onClick={this.leastPickedStudent}>Test Least Picked Student</button>
-          <button className="btn-all" onClick={this.toggleAll}>Test See All Students</button>
+          <button className="btn-all" onClick={this.viewAll}>Test See All Students</button>
         </div>
       );
     }
     if (this.state.view === 'card') { 
-      return ( <StudentCard onClose={this.toggleView} data={this.state.picked}/> ) 
+      return ( <StudentCard onClose={this.viewHome} data={this.state.picked}/> ) 
     }
     if (this.state.view === 'all') {
-      return ( <AllStudents onClose={this.toggleView} search={this.searchStudents} next={this.nextTenStudents} items={this.state.filteredStudents.slice(0, this.state.studentsToShow)}/> )
+      return ( <AllStudents onClose={this.viewHome} search={this.searchStudents} next={this.nextTenStudents} items={this.state.filteredStudents.slice(0, this.state.studentsToShow)}/> )
     }
   }
 };

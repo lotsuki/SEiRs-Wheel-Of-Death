@@ -7,6 +7,16 @@
 .all-container {
   position: relative;
   top: 70px;
+  padding: 5px;
+}
+
+.floating-container {
+  position: fixed;
+  background-color: lightgrey;
+  opacity: 50;
+  height: 70px;
+  width: 335px;
+  top: 10px;
 }
 
 .btn-fixed {

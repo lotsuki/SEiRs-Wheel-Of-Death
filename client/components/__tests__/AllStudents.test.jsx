@@ -27,6 +27,8 @@ describe('Back Button', () => {
     appComponent.update();
 
     expect(appComponent.state().view).toEqual('home');
+    expect(appComponent.state().studentsToShow).toEqual(10);
+
     expect(appComponent.find('.btn-fixed').length).toEqual(0);
   })
 })

@@ -1,4 +1,6 @@
 import React from 'react';
+import propTypes from 'prop-types';
+
 import { magGlass, clear } from '../symbols.jsx'; 
 
 const Search = ({ search }) => (
@@ -6,5 +8,9 @@ const Search = ({ search }) => (
     <input type="text" placeholder="Search Students" onChange={search}></input>
   </form>
 )
+
+Search.propTypes = {
+  onChange: propTypes.func.isRequired
+}
 
 export default Search;
