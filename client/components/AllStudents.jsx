@@ -9,9 +9,6 @@ import SortSelector from './SortSelector.jsx';
 // Component to display all student data to be scrolled through
 // Could also allow for manual selection of students? Doubt it would ever be used, but it'd be nice to have the option I guess.
 
-// To Do:
-//Should make everything in floating container into it's own component
-
 
 class AllStudents extends React.Component {
   constructor(props) {
@@ -39,7 +36,7 @@ class AllStudents extends React.Component {
       currentDisplay: this.state.students.slice(shown, shown+10)
       });
     this.scrollToTop();
-    }
+    };
   }
 
   scrollToTop() {
@@ -61,11 +58,14 @@ class AllStudents extends React.Component {
     const param = event.target.value
     let sorted = this.state.students;
     if (param === 'timesCalled') { 
-      sorted.sort((a, b) => { return a[param] - b[param]; })
-    }
-    if (param === 'name') {
-      sorted.sort((a, b) => { return a[param].toUpperCase() > b[param].toUpperCase() ? 1 : -1 })
-    }
+      sorted.sort((a, b) => { return a[param] - b[param] });
+    };
+    if (param === 'name') { 
+      sorted.sort((a, b) => { return a[param].toUpperCase() > b[param].toUpperCase() ? 1 : -1 });
+    };
+    if (param === 'lastCalled') {  
+      sorted.sort((a, b) => { return new Date(a[param]) - new Date(b[param]) });
+    };
     this.setState({
       students: sorted,
       currentDisplay: sorted.slice(0, 10)

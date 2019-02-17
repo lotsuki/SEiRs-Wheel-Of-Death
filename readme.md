@@ -20,9 +20,9 @@ The fetch request on the client side sorts the data and stores it in state. From
 1. All Students Page
 - [x] Limit # of student cards rendered when loading
 - [x] Implement pagination 
-- [ ] Add sort/filter options
+- [x] Add sort/filter options
 - [x] Build search component to search for specific students
-- [ ] Modify fetch to check if ProfilePic is included, or else set a default pic
+- [x] Modify fetch to check if ProfilePic is included, or else set a default pic
 - [x] Convert to class component for modularity
 
 2. General
@@ -38,6 +38,6 @@ The fetch request on the client side sorts the data and stores it in state. From
 
 #### Back End
 - [ ] Build out DB (redis)
-- [ ] Add API routes for patch/update
+- [ ] Add API routes for patch/update (updating timesCalled/lastCalled)
 - [ ] Add method for uploading .csv/.tsv files to populate DB with new class
 

@@ -4,6 +4,8 @@ import StudentCard from './StudentCard.jsx';
 import AllStudents from './AllStudents.jsx';
 import Spinner from './Spinner.jsx';
 import Navigation from './Navigation.jsx';
+import replacementPic from '../data.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -27,12 +29,13 @@ class App extends React.Component {
     fetch('/students')
     .then(response => response.json())
     .then(data => {
-      // data.sort((a, b) => {
-      //   return a.timesCalled - b.timesCalled;
-      // })
       data.forEach((student) => {
         return student.name = student.name[0] + " " + student.name[1];
       })
+      data.forEach((student) => {
+        if (!student["profilePic"]) {
+          return student["profilePic"] = replacementPic;
+      }})
       this.setState({
         students: data,
         isLoading: false
@@ -40,7 +43,6 @@ class App extends React.Component {
     })
     .catch(error => this.setState({ error, isLoading: false })
     );
-
   }
 
   pickRandomStudent() {

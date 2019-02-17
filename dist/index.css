@@ -59,3 +59,8 @@
   box-shadow: 0 0 3px black;
   max-width: 300px;
 }
+
+.card-profile {
+  height: 150px;
+  width: auto;
+}
