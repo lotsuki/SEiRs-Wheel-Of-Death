@@ -5,8 +5,6 @@ import StudentCard from './StudentCard.jsx';
 import Search from './Search.jsx';
 import SortSelector from './SortSelector.jsx';
 
-import { search, home } from '../symbols.jsx';
-
 // Component to display all student data to be scrolled through
 // Could also allow for manual selection of students? Doubt it would ever be used, but it'd be nice to have the option I guess.
 
@@ -19,11 +17,13 @@ const AllStudents = ({ search, onClose, items, next }) => (
   <div className = "all-container">
     <div className = "floating-container">
       <Search search={search}/>
-      <button className="btn-fixed" onClick={onClose}>Home</button> 
+      <i className={["fas fa-home", "btn-fixed"].join(' ')} onClick={onClose}></i>
+      {/* <button className="btn-fixed" onClick={onClose}>Home</button>  */}
+      <i className={["fas fa-arrow-circle-right", "btn-next"].join(' ')} onClick={next}></i>
     </div>
     <SortSelector />
       {items.map(item => <StudentCard data={item} key={item.id}/> )}
-    <button className="btn-next" onClick={next}>Show Next 10</button>
+    {/* <button className="btn-next" onClick={next}>Show Next 10</button> */}
   </div>
 )
 

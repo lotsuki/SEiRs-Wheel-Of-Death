@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       students: [],
       picked: null,
-      studentsToShow: 10,
+      studentsToShow: 0,
       filteredStudents: [],
       view: 'home',
       isLoading: true,
@@ -121,7 +121,7 @@ class App extends React.Component {
       return ( <StudentCard onClose={this.viewHome} data={this.state.picked}/> ) 
     }
     if (this.state.view === 'all') {
-      return ( <AllStudents onClose={this.viewHome} search={this.searchStudents} next={this.nextTenStudents} items={this.state.filteredStudents.slice(0, this.state.studentsToShow)}/> )
+      return ( <AllStudents onClose={this.viewHome} search={this.searchStudents} next={this.nextTenStudents} items={this.state.filteredStudents.slice(this.state.studentsToShow, this.state.studentsToShow+10)}/> )
     }
   }
 };

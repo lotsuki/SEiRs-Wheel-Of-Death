@@ -21,12 +21,30 @@
 
 .btn-fixed {
   position: fixed;
-  top: 20px;
+  top: 32px;
+  left: 25px;
+  font-size: x-large;
+}
+.btn-fixed:hover {
+  border-color:#7a7a7a;
+}
+
+.btn-next {
+  position: fixed;
+  top: 32px;
+  left: 311px;
+  font-size: x-large;
 }
 
 .search-form {
   position: fixed;
-  top: 50px;
+  top: 28px;
+  left: 64px;
+}
+
+.floating-search {
+  width: 230px;
+  height: 25px;
 }
 
 .student-card {
