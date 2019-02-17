@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { animateScroll as scroll } from 'react-scroll'
 
 import StudentCard from './StudentCard.jsx';
 import Search from './Search.jsx';
@@ -11,19 +12,65 @@ import SortSelector from './SortSelector.jsx';
 // To Do:
 //Should make everything in floating container into it's own component
 
-const AllStudents = ({ search, onClose, items, next }) => (
-  <div className = "all-container">
-    <div className = "floating-container">
-      <Search search={search}/>
-      <i className={["fas fa-home", "btn-fixed"].join(' ')} onClick={onClose}></i>
-      {/* <button className="btn-fixed" onClick={onClose}>Home</button>  */}
-      <i className={["fas fa-arrow-circle-right", "btn-next"].join(' ')} onClick={next}></i>
+
+class AllStudents extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      students: this.props.items,
+      studentsToShow: 10,
+      currentDisplay: this.props.items.slice(0, 10)
+    }
+    this.nextTenStudents = this.nextTenStudents.bind(this);
+    this.searchStudents = this.searchStudents.bind(this);
+    this.scrollToTop = this.scrollToTop.bind(this);
+  }
+
+  // Load up the next 10 students when viewing All Students -- may consider adding prevTenStudents functionality
+  nextTenStudents() {
+    let shown = this.state.studentsToShow;
+    if ((this.state.studentsToShow+10) > this.state.students.length) {
+      // I am open to better options than this alert box lol
+      alert('Stop clicking, there are no more students!');
+    } else {
+    this.setState({
+      studentsToShow: this.state.studentsToShow + 10,
+      currentDisplay: this.state.students.slice(shown, shown+10)
+      });
+    this.scrollToTop();
+    }
+  }
+
+  scrollToTop() {
+    scroll.scrollToTop({duration: 500});
+  }
+
+  searchStudents(event) {
+    let query = event.target.value;
+    let searchResults = this.state.students.filter(studentObj => {
+      return studentObj.name.toLowerCase().includes(query.toLowerCase())
+    })
+    this.setState({
+      studentsToShow: 0,
+      currentDisplay: searchResults
+    });
+  }
+
+  render() {
+    const {onClose} = this.props;
+    return(
+    <div className = "all-container">
+      <div className = "floating-container">
+        <Search search={this.searchStudents}/>
+        <i className={["fas fa-home", "btn-fixed"].join(' ')} onClick={onClose}></i>
+        <i className={["fas fa-arrow-circle-right", "btn-next"].join(' ')} onClick={this.nextTenStudents}></i>
+      </div>
+      <SortSelector />
+        {this.state.currentDisplay.map(item => <StudentCard data={item} key={item.id}/> )}
     </div>
-    <SortSelector />
-      {items.map(item => <StudentCard data={item} key={item.id}/> )}
-    {/* <button className="btn-next" onClick={next}>Show Next 10</button> */}
-  </div>
-)
+    )
+  }
+}
 
 
 AllStudents.propTypes = {
@@ -34,9 +81,7 @@ AllStudents.propTypes = {
     lastCalled: propTypes.string.isRequired,
     timesCalled: propTypes.number.isRequired
   })),
-  next: propTypes.func,
   onClose: propTypes.func,
-  search: propTypes.func
 };
 
 export default AllStudents

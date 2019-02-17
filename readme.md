@@ -22,10 +22,13 @@ The fetch request on the client side sorts the data and stores it in state. From
 - [x] Implement pagination 
 - [ ] Add sort/filter options
 - [x] Build search component to search for specific students
+- [ ] Modify fetch to check if ProfilePic is included, or else set a default pic
+- [x] Convert to class component for modularity
 
 2. General
 - [ ] CSS Styling, general flair
-- [ ] Write more tests!
+- [ ] Write more tests! 
+- [ ] Also fix tests I've broken by changing things.
 - [ ] Set up CircleCI integration
 
 3. Optional Front End To Do

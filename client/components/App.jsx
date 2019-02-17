@@ -1,5 +1,4 @@
 import React from 'react';
-import { animateScroll as scroll } from 'react-scroll'
 
 import StudentCard from './StudentCard.jsx';
 import AllStudents from './AllStudents.jsx';
@@ -21,13 +20,11 @@ class App extends React.Component {
     this.leastPickedStudent = this.leastPickedStudent.bind(this);
     this.viewHome = this.viewHome.bind(this);
     this.viewAll = this.viewAll.bind(this);
-    this.nextTenStudents = this.nextTenStudents.bind(this);
-    this.searchStudents = this.searchStudents.bind(this);
-    this.scrollToTop = this.scrollToTop.bind(this);
   };
 
   componentDidMount() {
     //fetch from (DB) list of students, sort data, then add to state
+    //TO DO -- Add stock image as profilePic if pic is undefined
     fetch('/students')
     .then(response => response.json())
     .then(data => {
@@ -71,21 +68,6 @@ class App extends React.Component {
     })
   }
 
-  // Load up the next 10 students when viewing All Students -- may consider adding prevTenStudents functionality
-  nextTenStudents() {
-    if (this.state.studentsToShow > this.state.students.length) {
-      // I am open to better options than this alert box lol
-      alert('Stop clicking, there are no more students!');
-    } else {
-    this.setState({ studentsToShow: this.state.studentsToShow + 10 });
-    this.scrollToTop();
-    }
-  }
-
-  scrollToTop() {
-    scroll.scrollToTop({duration: 500});
-  }
-
   // viewHome resets everything
   viewHome() {
     this.setState({ 
@@ -99,16 +81,6 @@ class App extends React.Component {
   // Renders AllStudents component
   viewAll() {
     this.setState({ view: 'all' });
-  }
-
-  searchStudents(event) {
-    let query = event.target.value;
-    let searchResults = this.state.students.filter(studentObj => {
-      return studentObj.name.toLowerCase().includes(query.toLowerCase())
-    })
-    this.setState({
-      filteredStudents: searchResults
-    });
   }
 
   // Could move the buttons into their own component for more modularity?
@@ -130,7 +102,7 @@ class App extends React.Component {
       return ( <StudentCard onClose={this.viewHome} data={this.state.picked}/> ) 
     }
     if (this.state.view === 'all') {
-      return ( <AllStudents onClose={this.viewHome} search={this.searchStudents} next={this.nextTenStudents} items={this.state.filteredStudents.slice(this.state.studentsToShow, this.state.studentsToShow+10)}/> )
+      return ( <AllStudents onClose={this.viewHome} items={this.state.filteredStudents}/> )
     }
   }
 };
