@@ -24,6 +24,7 @@ class AllStudents extends React.Component {
     this.nextTenStudents = this.nextTenStudents.bind(this);
     this.searchStudents = this.searchStudents.bind(this);
     this.scrollToTop = this.scrollToTop.bind(this);
+    this.sortStudents = this.sortStudents.bind(this);
   }
 
   // Load up the next 10 students when viewing All Students -- may consider adding prevTenStudents functionality
@@ -56,6 +57,21 @@ class AllStudents extends React.Component {
     });
   }
 
+  sortStudents(event) {
+    const param = event.target.value
+    let sorted = this.state.students;
+    if (param === 'timesCalled') { 
+      sorted.sort((a, b) => { return a[param] - b[param]; })
+    }
+    if (param === 'name') {
+      sorted.sort((a, b) => { return a[param].toUpperCase() > b[param].toUpperCase() ? 1 : -1 })
+    }
+    this.setState({
+      students: sorted,
+      currentDisplay: sorted.slice(0, 10)
+    })
+  }
+
   render() {
     const {onClose} = this.props;
     return(
@@ -65,7 +81,7 @@ class AllStudents extends React.Component {
         <i className={["fas fa-home", "btn-fixed"].join(' ')} onClick={onClose}></i>
         <i className={["fas fa-arrow-circle-right", "btn-next"].join(' ')} onClick={this.nextTenStudents}></i>
       </div>
-      <SortSelector />
+      <SortSelector sortSelect={this.sortStudents}/>
         {this.state.currentDisplay.map(item => <StudentCard data={item} key={item.id}/> )}
     </div>
     )

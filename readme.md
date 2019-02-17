@@ -10,7 +10,7 @@ Getting up to speed to work on this:
 I've set up 3 options so far, pick a random student, pick the least called on student, and view all students.
 These functions are basic and will need to be retooled, they're largely placeholders till we build out the back end.
 
-Server has one route set up, it fetches data from the generated dummyData.json file. See dummy.js in /server if you want to see how it works. 
+Server has one route set up, it fetches data from the generated dummyData.json file. See dummy.js in /server if you want to see how it works. I tried to simulate how I imagined the shape of the data would be when the DB is fully built out.
 
 The fetch request on the client side sorts the data and stores it in state. From there you can explore the app.
 

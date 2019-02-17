@@ -3,6 +3,7 @@ import React from 'react';
 import StudentCard from './StudentCard.jsx';
 import AllStudents from './AllStudents.jsx';
 import Spinner from './Spinner.jsx';
+import Navigation from './Navigation.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,8 +11,6 @@ class App extends React.Component {
     this.state = {
       students: [],
       picked: null,
-      studentsToShow: 0,
-      filteredStudents: [],
       view: 'home',
       isLoading: true,
       error: null,
@@ -28,15 +27,14 @@ class App extends React.Component {
     fetch('/students')
     .then(response => response.json())
     .then(data => {
-      data.sort((a, b) => {
-        return a.timesCalled - b.timesCalled;
-      })
+      // data.sort((a, b) => {
+      //   return a.timesCalled - b.timesCalled;
+      // })
       data.forEach((student) => {
         return student.name = student.name[0] + " " + student.name[1];
       })
       this.setState({
         students: data,
-        filteredStudents: data,
         isLoading: false
       })
     })
@@ -90,19 +88,13 @@ class App extends React.Component {
       return ( <Spinner /> ) 
     }
     if (this.state.view === 'home') {
-      return (
-        <div>
-          <button className="btn-random" onClick={this.pickRandomStudent}>Test Random Student</button>
-          <button className="btn-least" onClick={this.leastPickedStudent}>Test Least Picked Student</button>
-          <button className="btn-all" onClick={this.viewAll}>Test See All Students</button>
-        </div>
-      );
+      return ( <Navigation pickRandom={this.pickRandomStudent} pickLeast={this.leastPickedStudent} viewAll={this.viewAll}/> );
     }
     if (this.state.view === 'card') { 
       return ( <StudentCard onClose={this.viewHome} data={this.state.picked}/> ) 
     }
     if (this.state.view === 'all') {
-      return ( <AllStudents onClose={this.viewHome} items={this.state.filteredStudents}/> )
+      return ( <AllStudents onClose={this.viewHome} items={this.state.students}/> )
     }
   }
 };
