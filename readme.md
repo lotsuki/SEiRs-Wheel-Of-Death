@@ -26,7 +26,10 @@ The fetch request on the client side sorts the data and stores it in state. From
 - [x] Convert to class component for modularity
 
 2. General
-- [ ] CSS Styling, general flair
+- [o] CSS Styling, general flair
+- [ ] CSS Individual Student Cards
+- [ ] Fix CSS on Floating Navigation Bar
+- [ ] Add CSS to SortSelector Component
 - [ ] Write more tests! 
 - [ ] Also fix tests I've broken by changing things.
 - [ ] Set up CircleCI integration
@@ -40,5 +43,6 @@ The fetch request on the client side sorts the data and stores it in state. From
 #### Back End
 - [ ] Build out DB (redis)
 - [ ] Add API routes for patch/update (updating timesCalled/lastCalled)
-- [ ] Add method for uploading .csv/.tsv files to populate DB with new class
+- [x] Add method for uploading .csv/.tsv files (Added method on Front End, but it only sends an alert)
+- [ ] Write method/DB model to send .csv/.tsv file to populate DB 
 

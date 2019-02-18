@@ -40,7 +40,7 @@ class AllStudents extends React.Component {
   }
 
   scrollToTop() {
-    scroll.scrollToTop({duration: 500});
+    scroll.scrollToTop({ duration: 500 });
   }
 
   searchStudents(event) {
