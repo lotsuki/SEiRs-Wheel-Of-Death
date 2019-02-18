@@ -21,7 +21,7 @@ class App extends React.Component {
     this.leastPickedStudent = this.leastPickedStudent.bind(this);
     this.viewHome = this.viewHome.bind(this);
     this.viewAll = this.viewAll.bind(this);
-    this.uploadFiles = this.uploadFiles.bind(this);
+    this.uploadFile = this.uploadFile.bind(this);
   };
 
   componentDidMount() {
@@ -82,7 +82,7 @@ class App extends React.Component {
     this.setState({ view: 'all' });
   }
 
-  uploadFiles(files) {
+  uploadFile(files) {
     var reader = new FileReader();
     reader.onload = function(e) {
       // Use reader.result
@@ -96,7 +96,7 @@ class App extends React.Component {
       return ( <Spinner /> ) 
     }
     if (this.state.view === 'home') {
-      return ( <Navigation pickRandom={this.pickRandomStudent} pickLeast={this.leastPickedStudent} viewAll={this.viewAll} handleFiles={this.uploadFiles}/> );
+      return ( <Navigation pickRandom={this.pickRandomStudent} pickLeast={this.leastPickedStudent} viewAll={this.viewAll} handleFiles={this.uploadFile}/> );
     }
     if (this.state.view === 'card') { 
       return ( <StudentCard onClose={this.viewHome} data={this.state.picked}/> ) 

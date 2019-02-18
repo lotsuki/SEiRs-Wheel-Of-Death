@@ -3,9 +3,8 @@
   margin: auto;
 }
 
-.hidden {
-  visibility: hidden;
-}
+
+/* ****************** Main Menu ******************** */
 
 .button-row {
   font-size: 24px;
@@ -29,10 +28,17 @@
   position: relative;
   top: 75px;
   padding: 5px;
-  margin: auto;
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
+  align-content: center;
+  max-width: 50%;
+  margin: auto;
 }
+
+
+
+/* ************ Floating Navigation Menu ****************** */
 
 .floating-container {
   background-color: lightgrey;
@@ -65,8 +71,6 @@
   outline: auto;
 }
 
-
-
 .floating-search {
   width: 230px;
   height: 30px;
@@ -77,13 +81,17 @@
   margin-left: -115px;
 }
 
+
+
+/* ***************** Individual Card ***************** */
+
 .student-card {
   background-color: whitesmoke;
   padding: 0.4em;
   margin: auto;
   margin-block-start: 0.75em;
   box-shadow: 0 0 3px black;
-  max-width: 300px;
+  width: 300px;
 }
 
 .card-profile {

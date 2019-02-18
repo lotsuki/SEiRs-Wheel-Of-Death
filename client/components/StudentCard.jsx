@@ -8,7 +8,7 @@ import propTypes from 'prop-types';
 // Time to start prettying up this app
 
 const StudentCard = ({ onClose, data: { name, profilePic, lastCalled, timesCalled }  }) => (
-  <div className = 'student-card'>
+  <ul className = 'student-card'>
       <div className = 'card-name'>{name}</div>
       <img className = 'card-profile' src={profilePic}></img>
       <p>Last Called: {new Date(lastCalled).toLocaleDateString('en-US', {
@@ -18,7 +18,7 @@ const StudentCard = ({ onClose, data: { name, profilePic, lastCalled, timesCalle
                       })} </p>
       <p>Times Called: {timesCalled}</p>
     {(onClose) ? <button onClick = { onClose }> Back </button> : null}
-  </div>
+  </ul>
 );
 
 StudentCard.propTypes = {
