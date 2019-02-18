@@ -21,6 +21,7 @@ class App extends React.Component {
     this.leastPickedStudent = this.leastPickedStudent.bind(this);
     this.viewHome = this.viewHome.bind(this);
     this.viewAll = this.viewAll.bind(this);
+    this.uploadFiles = this.uploadFiles.bind(this);
   };
 
   componentDidMount() {
@@ -81,14 +82,21 @@ class App extends React.Component {
     this.setState({ view: 'all' });
   }
 
-  // Could move the buttons into their own component for more modularity?
-  // Replace or CSS buttons to make this part of the app more visually pleasing
+  uploadFiles(files) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      // Use reader.result
+      alert(reader.result)
+    }
+    reader.readAsText(files[0]);
+}
+
   render() {
     if (this.state.isLoading) {
       return ( <Spinner /> ) 
     }
     if (this.state.view === 'home') {
-      return ( <Navigation pickRandom={this.pickRandomStudent} pickLeast={this.leastPickedStudent} viewAll={this.viewAll}/> );
+      return ( <Navigation pickRandom={this.pickRandomStudent} pickLeast={this.leastPickedStudent} viewAll={this.viewAll} handleFiles={this.uploadFiles}/> );
     }
     if (this.state.view === 'card') { 
       return ( <StudentCard onClose={this.viewHome} data={this.state.picked}/> ) 

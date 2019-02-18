@@ -26,7 +26,7 @@ class AllStudents extends React.Component {
 
   // Load up the next 10 students when viewing All Students -- may consider adding prevTenStudents functionality
   nextTenStudents() {
-    let shown = this.state.studentsToShow;
+    const shown = this.state.studentsToShow;
     if ((this.state.studentsToShow+10) > this.state.students.length) {
       // I am open to better options than this alert box lol
       alert('Stop clicking, there are no more students!');

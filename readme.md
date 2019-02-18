@@ -34,8 +34,9 @@ The fetch request on the client side sorts the data and stores it in state. From
 3. Optional Front End To Do
 - [ ] Add tap to confirm call on student (increment timesCalled counter)
 - [ ] Wheel animation
-
-
+- [ ] We could make a component that generates an exportable randomized list, for things like deciding student presentation order
+- [ ] Add feature to allow for adding Notes to student cards
+ 
 #### Back End
 - [ ] Build out DB (redis)
 - [ ] Add API routes for patch/update (updating timesCalled/lastCalled)
