@@ -58,11 +58,13 @@ class App extends React.Component {
 
   leastPickedStudent() {
     // Fetch request, returns single student and update entry in DB?
-    // Placeholder function for dev purposes, not the most robust but it's all gonna be scrapped anyways
 
-    // Since data has been sorted in fetch request, index 0 should be a student with the fewest timesCalled
+    const uncalled = this.state.students.find((student) => {
+      return student.timesCalled <= 1;
+    })
+
     this.setState({
-      picked: this.state.students[0],
+      picked: uncalled,
       view: 'card'
     })
   }
@@ -101,7 +103,7 @@ class App extends React.Component {
     if (this.state.view === 'card') { 
       return ( 
       <div>
-        <button onClick={this.viewHome}>Back</button>
+        <button className="btn-back" onClick={this.viewHome}>Back</button>
         <StudentCard data={this.state.picked}/>
       </div> 
       ) 

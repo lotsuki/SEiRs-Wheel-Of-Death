@@ -11,7 +11,8 @@
   flex-direction: row;
   align-content: center;
   justify-content: center;
-  white-space: nowrap
+  white-space: nowrap;
+
 }
 /* Switch to flexbox column, adjust other settings for better display on smaller screens */
 @media only screen and (max-width: 1000px) {
@@ -39,11 +40,13 @@
   display: flex;
   cursor: pointer;
   white-space: nowrap;
+  font-family: 'Raleway', sans-serif;
 }
 
 .navigation-item {
   margin-right: 0.8em;
   margin-left: 0.4em;
+  margin-top: 0.1em;
 }
 
 
@@ -90,6 +93,7 @@
   flex-wrap: wrap;
   align-content: space-around;
   justify-content: center;
+
 }
 
 .btn-home {
@@ -131,9 +135,51 @@
   margin-block-end: 1.5em;
   box-shadow: 0 0 3px black;
   width: 300px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Raleway', sans-serif;
+}
+
+.card-name {
+  font-size: 20px;
+  font-weight: 900;
+  align-self: center;
+  margin-bottom: 5%;
 }
 
 .card-profile {
   height: 150px;
-  width: auto;
+  width: 150px;
+  align-self: center;
+  border: 3px solid white;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+p {
+  font-weight: 600;
+}
+
+
+
+.btn-back {
+  position: fixed;
+  width: 100px;
+  height: 50px;
+  margin: 20% auto; 
+  left: 0;
+  right: 0;
+  background-color: whitesmoke;
+  color: black;
+  border: 2px solid #e7e7e7;
+  box-shadow: 0 0 1px black;
 }

@@ -10,7 +10,9 @@ import propTypes from 'prop-types';
 const StudentCard = ({ data: { name, profilePic, lastCalled, timesCalled }  }) => (
   <ul className = 'student-card'>
       <div className = 'card-name'>{name}</div>
+      <hr></hr>
       <img className = 'card-profile' src={profilePic}></img>
+      <hr></hr>
       <p>Last Called: {new Date(lastCalled).toLocaleDateString('en-US', {
                         weekday: 'short',
                         day: 'numeric',
