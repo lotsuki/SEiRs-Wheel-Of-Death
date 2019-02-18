@@ -80,8 +80,8 @@ class AllStudents extends React.Component {
         <Search search={this.searchStudents}/>
         <i className={["fas fa-home", "btn-fixed"].join(' ')} onClick={onClose} title="Home"></i>
         <i className={["fas fa-arrow-circle-right", "btn-next"].join(' ')} onClick={this.nextTenStudents} title="Next 10 Results"></i>
+        <SortSelector sortSelect={this.sortStudents}/>
       </div>
-      <SortSelector sortSelect={this.sortStudents}/>
         {this.state.currentDisplay.map(item => <StudentCard data={item} key={item.id}/> )}
     </div>
     )

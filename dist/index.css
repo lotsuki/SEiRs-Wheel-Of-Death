@@ -1,30 +1,53 @@
+#root {
+  max-width: 75%;
+  margin: auto;
+}
+
 .hidden {
   visibility: hidden;
 }
 
-.navigation-main {
+.button-row {
   font-size: 24px;
+  background-color: whitesmoke;
+  padding: 0.4em;
+  margin: 10px;
+  box-shadow: 0 0 3px black;
+  width: 25%;
+  display: inline-block;
+  cursor: pointer;
 }
+
+.navigation-item {
+  margin-right: 0.8em;
+  margin-left: 0.4em;
+}
+
+
 
 .all-container {
   position: relative;
-  top: 70px;
+  top: 75px;
   padding: 5px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .floating-container {
-  position: fixed;
   background-color: lightgrey;
   opacity: 50;
   height: 70px;
   width: 335px;
-  top: 10px;
   box-shadow: 0 0 3px black;
-
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  margin-top: -35px; /* Negative half of height for exact center. */
+  margin-left: -167.5px; /* Negative half of width. */
 }
 
 .btn-fixed {
-  position: fixed;
   top: 32px;
   left: 25px;
   font-size: x-large;
@@ -34,7 +57,6 @@
 }
 
 .btn-next {
-  position: fixed;
   top: 32px;
   left: 311px;
   font-size: x-large;
@@ -43,21 +65,23 @@
   outline: auto;
 }
 
-.search-form {
-  position: fixed;
-  top: 28px;
-  left: 64px;
-}
+
 
 .floating-search {
   width: 230px;
-  height: 25px;
+  height: 30px;
+  top: 4.5%;
+  left: 50%;
+  position: fixed;
+  margin-top: -15px;
+  margin-left: -115px;
 }
 
 .student-card {
   background-color: whitesmoke;
   padding: 0.4em;
-  margin: 10px;
+  margin: auto;
+  margin-block-start: 0.75em;
   box-shadow: 0 0 3px black;
   max-width: 300px;
 }

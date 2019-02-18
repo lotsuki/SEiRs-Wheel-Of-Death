@@ -14,9 +14,7 @@ const StudentCard = ({ onClose, data: { name, profilePic, lastCalled, timesCalle
       <p>Last Called: {new Date(lastCalled).toLocaleDateString('en-US', {
                         weekday: 'short',
                         day: 'numeric',
-                        month: 'short',
-                        hour: 'numeric',
-                        minute: 'numeric' 
+                        month: 'short', 
                       })} </p>
       <p>Times Called: {timesCalled}</p>
     {(onClose) ? <button onClick = { onClose }> Back </button> : null}
