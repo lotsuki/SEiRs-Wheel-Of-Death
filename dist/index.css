@@ -78,7 +78,7 @@
 /* ************ Floating Navigation Menu ****************** */
 
 .floating-container {
-  background-color: lightgrey;
+  background-color: whitesmoke;
   opacity: 50;
   height: 80px;
   width: 335px;
@@ -175,9 +175,10 @@ p {
   position: fixed;
   width: 100px;
   height: 50px;
-  margin: 20% auto; 
-  left: 0;
-  right: 0;
+  left: 50%;
+  top: 45%;
+  margin-left: -50px;
+  margin-top: -25px;
   background-color: whitesmoke;
   color: black;
   border: 2px solid #e7e7e7;
