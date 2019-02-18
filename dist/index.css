@@ -2,7 +2,9 @@
   visibility: hidden;
 }
 
-
+.navigation-main {
+  font-size: 24px;
+}
 
 .all-container {
   position: relative;

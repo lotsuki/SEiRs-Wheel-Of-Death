@@ -7,9 +7,16 @@ import ReactFileReader from 'react-file-reader';
 const Navigation = ({ pickRandom, pickLeast, viewAll, handleFiles }) => (
   <div>
     <div className="navigation-main">
-      <button className="btn-random" onClick={pickRandom}>Pick Random Student</button>
-      <button className="btn-least" onClick={pickLeast}>Pick Uncalled Student</button>
-      <button className="btn-all" onClick={viewAll}>See All Students</button>
+      <div className="random-row"  onClick={pickRandom}>Pick Random Student
+        <i className={["fas fa-user-graduate fa-4x", "random"].join(' ')}></i>
+      </div>
+      <div className="uncalled-row" onClick={pickLeast}>
+        <i className="fas fa-user-clock fa-4x"></i>
+        Pick Uncalled Student
+      </div>
+      <div className="all-row" onClick={viewAll}>See All Students
+        <i className="fas fa-users fa-4x"></i>
+      </div>
     </div>
     <div className="navigation-other">
       <ReactFileReader handleFiles={handleFiles} fileTypes={[".csv", ".tsv",]}>

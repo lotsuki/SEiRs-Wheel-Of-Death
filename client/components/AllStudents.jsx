@@ -50,7 +50,7 @@ class AllStudents extends React.Component {
     })
     this.setState({
       studentsToShow: 0,
-      currentDisplay: searchResults
+      currentDisplay: searchResults.slice(0, 10)
     });
   }
 
@@ -78,8 +78,8 @@ class AllStudents extends React.Component {
     <div className = "all-container">
       <div className = "floating-container">
         <Search search={this.searchStudents}/>
-        <i className={["fas fa-home", "btn-fixed"].join(' ')} onClick={onClose}></i>
-        <i className={["fas fa-arrow-circle-right", "btn-next"].join(' ')} onClick={this.nextTenStudents}></i>
+        <i className={["fas fa-home", "btn-fixed"].join(' ')} onClick={onClose} title="Home"></i>
+        <i className={["fas fa-arrow-circle-right", "btn-next"].join(' ')} onClick={this.nextTenStudents} title="Next 10 Results"></i>
       </div>
       <SortSelector sortSelect={this.sortStudents}/>
         {this.state.currentDisplay.map(item => <StudentCard data={item} key={item.id}/> )}
