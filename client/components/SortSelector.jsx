@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const SortSelector = ({ sortSelect }) => (
-  <select className="select" onChange={sortSelect}> 
+  <select className="select" onChange={sortSelect}>
     <option value="Sort Students">Sort Students</option>
     <option value="timesCalled">Times Called</option>
     <option value="name">Name</option>
@@ -11,7 +11,7 @@ const SortSelector = ({ sortSelect }) => (
 );
 
 SortSelector.propTypes = {
-  sortSelect: propTypes.func.isRequired
+  sortSelect: propTypes.func.isRequired,
 };
 
 export default SortSelector;

@@ -14,7 +14,6 @@ class App extends React.Component {
       students: [],
       picked: null,
       view: 'home',
-      fileStorage: [],
       isLoading: true,
       error: null,
     };
@@ -24,19 +23,19 @@ class App extends React.Component {
     this.viewAll = this.viewAll.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
     this.updateStudentData = this.updateStudentData.bind(this);
-  };
+  }
 
   componentDidMount() {
-    //fetch from (DB) list of students, sort data, then add to state
-    //TO DO -- Add stock image as profilePic if pic is undefined
+    // fetch from (DB) list of students, sort data, then add to state
     fetch('/students')
       .then(response => response.json())
       .then((data) => {
         data.forEach((student) => {
-          student.name = student.name[0] + " " + student.name[1];
+          student.name = (`${student.name[0]} ${student.name[1]}`);
           if (!student["profilePic"]) {
             student["profilePic"] = replacementPic();
-          }})
+          }
+        });
         this.setState({
           students: data,
           isLoading: false,
@@ -50,7 +49,6 @@ class App extends React.Component {
     // Using this picRandomStudent could trigger the Wheel of Death animation maybe?
     const max = this.state.students.length;
     const index = Math.floor(Math.random() * (max - 1) + 1);
-    // Set picked to the random Index, and update the # of 
     this.setState({
       picked: this.state.students[index],
       view: 'card',
@@ -59,15 +57,13 @@ class App extends React.Component {
 
   leastPickedStudent() {
     // Fetch request, returns single student and update entry in DB?
-
     const uncalled = this.state.students.find((student) => {
       return student.timesCalled <= 1;
-    })
-
+    });
     this.setState({
       picked: uncalled,
-      view: 'card'
-    })
+      view: 'card',
+    });
   }
 
   // viewHome resets everything
@@ -76,7 +72,7 @@ class App extends React.Component {
       view: 'home',
       picked: null,
       studentsToShow: 0,
-      filteredStudents: this.state.students
+      filteredStudents: this.state.students,
     });
   }
 
@@ -85,9 +81,10 @@ class App extends React.Component {
     this.setState({ view: 'all' });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   uploadFile(files) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
       // Use reader.result
       alert(reader.result)
     }

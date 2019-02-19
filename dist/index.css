@@ -4,7 +4,7 @@
 }
 
 
-/* ****************** Main Menu ******************** */
+/* *********************** Main Menu ************************* */
 
 .navigation-main {
   display: flex;
@@ -12,7 +12,6 @@
   align-content: center;
   justify-content: center;
   white-space: nowrap;
-
 }
 /* Switch to flexbox column, adjust other settings for better display on smaller screens */
 @media only screen and (max-width: 1000px) {
@@ -37,11 +36,31 @@
   padding: 0.4em;
   margin: 10px;
   box-shadow: 0 0 3px black;
-  width: 15em;
+  width: calc(250px + 5vw);
+  min-width: 330px;
   display: flex;
   cursor: pointer;
   white-space: nowrap;
   font-family: 'Raleway', sans-serif;
+}
+/* Mobile Device optimization */
+@media only screen 
+  and (min-device-width: 300px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+    .button-row {
+      font-size: 50px;
+      width: auto;
+      margin-right: 10%;
+      margin-top: 3%;
+    }
+    .navigation-other {
+      margin-top: 3% !important;
+      font-size: 50px !important;
+    }
+    #root {
+      max-width: 100%;
+    }
 }
 
 .navigation-item {
@@ -78,7 +97,7 @@
 }
 
 
-/* ************ Floating Navigation Menu ****************** */
+/* ********************** Floating Navigation Menu ********************* */
 
 .floating-container {
   background-color: whitesmoke;
@@ -132,7 +151,7 @@
 
 
 
-/* ***************** Individual Card ***************** */
+/* ************************** Individual Card ************************* */
 
 .student-card {
   background-color: whitesmoke;

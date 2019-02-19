@@ -14,7 +14,7 @@ class AllStudents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allStudents: this.props.items,
+      students: this.props.items,
       studentsToShow: 12,
       currentDisplay: this.props.items.slice(0, 12),
     };
@@ -84,7 +84,7 @@ class AllStudents extends React.Component {
       </div>
         {this.state.currentDisplay.map(item => <StudentCard data={item} key={item.id} id={item.id} addNotes={addNotes}/> )}
     </div>
-    )
+    );
   }
 }
 
