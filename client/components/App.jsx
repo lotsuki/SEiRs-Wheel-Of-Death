@@ -9,11 +9,12 @@ import replacementPic from '../data.jsx';
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       students: [],
       picked: null,
       view: 'home',
+      fileStorage: [],
       isLoading: true,
       error: null,
     };
@@ -29,20 +30,19 @@ class App extends React.Component {
     //fetch from (DB) list of students, sort data, then add to state
     //TO DO -- Add stock image as profilePic if pic is undefined
     fetch('/students')
-    .then(response => response.json())
-    .then(data => {
-      data.forEach((student) => {
-        student.name = student.name[0] + " " + student.name[1];
-        if (!student["profilePic"]) {
-          student["profilePic"] = replacementPic();
-      }})
-      this.setState({
-        students: data,
-        isLoading: false
+      .then(response => response.json())
+      .then((data) => {
+        data.forEach((student) => {
+          student.name = student.name[0] + " " + student.name[1];
+          if (!student["profilePic"]) {
+            student["profilePic"] = replacementPic();
+          }})
+        this.setState({
+          students: data,
+          isLoading: false,
+        });
       })
-    })
-    .catch(error => this.setState({ error, isLoading: false })
-    );
+      .catch(error => this.setState({ error, isLoading: false }));
   }
 
   pickRandomStudent() {
@@ -53,7 +53,7 @@ class App extends React.Component {
     // Set picked to the random Index, and update the # of 
     this.setState({
       picked: this.state.students[index],
-      view: 'card'
+      view: 'card',
     });
   }
 
@@ -92,53 +92,44 @@ class App extends React.Component {
       alert(reader.result)
     }
     reader.readAsText(files[0]);
-}
+  }
 
-  //Super hacky, I'll clean this up later. But we are currently allowing for adding notes to the end of cards.
+  // Super hacky, I'll clean this up later. But we are currently allowing for adding notes to the end of cards.
   updateStudentData(event) {
     let id;
     (event.target.id) ? id = event.target.id : id = event.target.parentNode.id || event.target.childNode.id
     const oldState = this.state.students;
-    const oldStudentData = this.state.students.find((student) => {
-      return student.id == id
-    })
-    console.log(oldStudentData)
+    const oldStudentData = this.state.students.find((student) => { return student.id == id;
+    });
     const newData = prompt(`Enter notes for student, ${oldStudentData.name}`);
     if (newData !== null) {
       oldStudentData.notes.push(`${(oldStudentData.notes.length - 1) + 1}.` + newData + " ");
-      oldState.forEach((student) => { if (student.id == id) { student = oldStudentData }})
+      oldState.forEach((student) => { if (student.id == id) { student = oldStudentData; } });
       this.setState({
-        students: oldState
-      })
+        students: oldState,
+      });
     }
   }
 
   render() {
     if (this.state.isLoading) {
-      return ( <Spinner /> ) 
+      return (<Spinner />);
     }
     if (this.state.view === 'home') {
-      return ( <Navigation pickRandom={this.pickRandomStudent} pickLeast={this.leastPickedStudent} viewAll={this.viewAll} handleFiles={this.uploadFile}/> );
+      return (<Navigation pickRandom={this.pickRandomStudent} pickLeast={this.leastPickedStudent} viewAll={this.viewAll} handleFiles={this.uploadFile}/>);
     }
-    if (this.state.view === 'card') { 
-      return ( 
+    if (this.state.view === 'card') {
+      return (
       <div>
-        <i className={["fas fa-home fa-5x", "btn-back"].join(' ')} onClick={this.viewHome} title="Home"></i>
+        <i className={['fas fa-home fa-5x', 'btn-back'].join(' ')} onClick={this.viewHome} title="Home"></i>
         <StudentCard data={this.state.picked} addNotes={this.updateStudentData}/>
-      </div> 
-      ) 
+      </div>
+      );
     }
     if (this.state.view === 'all') {
-      return ( <AllStudents onClose={this.viewHome} items={this.state.students} addNotes={this.updateStudentData}/> )
+      return (<AllStudents onClose={this.viewHome} items={this.state.students} addNotes={this.updateStudentData}/>);
     }
   }
-};
+}
 
 export default App;
-
-
-
-/*
-Notes: http://wheelnavjs.softwaretailoring.net/index.html
-
-*/

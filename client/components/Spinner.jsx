@@ -1,10 +1,9 @@
 import React from 'react';
 
 const Spinner = () => (
-  <div> 
+  <div>
     <img src='https://thumbs.gfycat.com/FaithfulDeafeningBullmastiff-small.gif'></img> 
-  </div> 
+  </div>
 );
 
 export default Spinner;
-
