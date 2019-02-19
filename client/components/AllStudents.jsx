@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { animateScroll as scroll } from 'react-scroll'
+import { animateScroll as scroll } from 'react-scroll';
 
 import StudentCard from './StudentCard.jsx';
 import Search from './Search.jsx';
@@ -16,7 +16,7 @@ class AllStudents extends React.Component {
     this.state = {
       students: this.props.items,
       studentsToShow: 10,
-      currentDisplay: this.props.items.slice(0, 10)
+      currentDisplay: this.props.items.slice(0, 10),
     }
     this.nextTenStudents = this.nextTenStudents.bind(this);
     this.searchStudents = this.searchStudents.bind(this);
@@ -27,16 +27,16 @@ class AllStudents extends React.Component {
   // Load up the next 10 students when viewing All Students -- may consider adding prevTenStudents functionality
   nextTenStudents() {
     const shown = this.state.studentsToShow;
-    if ((this.state.studentsToShow+10) > this.state.students.length) {
+    if ((this.state.studentsToShow + 12) > this.state.students.length) {
       // I am open to better options than this alert box lol
       alert('Stop clicking, there are no more students!');
     } else {
-    this.setState({
-      studentsToShow: this.state.studentsToShow + 10,
-      currentDisplay: this.state.students.slice(shown, shown+10)
+      this.setState({
+        studentsToShow: this.state.studentsToShow + 12,
+        currentDisplay: this.state.students.slice(shown, shown + 12),
       });
-    this.scrollToTop();
-    };
+      this.scrollToTop();
+    }
   }
 
   scrollToTop() {
@@ -44,10 +44,10 @@ class AllStudents extends React.Component {
   }
 
   searchStudents(event) {
-    let query = event.target.value;
-    let searchResults = this.state.students.filter(studentObj => {
-      return studentObj.name.toLowerCase().includes(query.toLowerCase())
-    })
+    const query = event.target.value;
+    const searchResults = this.state.students.filter((studentObj) => {
+      return studentObj.name.toLowerCase().includes(query.toLowerCase());
+    });
     this.setState({
       studentsToShow: 0,
       currentDisplay: searchResults.slice(0, 10)
@@ -55,8 +55,8 @@ class AllStudents extends React.Component {
   }
 
   sortStudents(event) {
-    const param = event.target.value
-    let sorted = this.state.students;
+    const param = event.target.value;
+    const sorted = this.state.students;
     if (param === 'timesCalled') { 
       sorted.sort((a, b) => { return a[param] - b[param] });
     };
@@ -73,13 +73,13 @@ class AllStudents extends React.Component {
   }
 
   render() {
-    const {onClose, addNotes} = this.props;
-    return(
+    const { onClose, addNotes } = this.props;
+    return (
     <div className = "all-container">
       <div className = "floating-container">
-        <i className={["fas fa-home", "btn-home"].join(' ')} onClick={onClose} title="Home"></i>
+        <i className={['fas fa-home', 'btn-home'].join(' ')} onClick={onClose} title="Home"></i>
         <Search search={this.searchStudents}/>
-        <i className={["fas fa-arrow-circle-right", "btn-next"].join(' ')} onClick={this.nextTenStudents} title="Next 10 Results"></i>
+        <i className={['fas fa-arrow-circle-right', 'btn-next'].join(' ')} onClick={this.nextTenStudents} title="Next 10 Results"></i>
         <SortSelector sortSelect={this.sortStudents}/>
       </div>
         {this.state.currentDisplay.map(item => <StudentCard data={item} key={item.id} id={item.id} addNotes={addNotes}/> )}
@@ -95,10 +95,10 @@ AllStudents.propTypes = {
     name: propTypes.string.isRequired,
     profilePic: propTypes.string.isRequired,
     lastCalled: propTypes.string.isRequired,
-    timesCalled: propTypes.number.isRequired
+    timesCalled: propTypes.number.isRequired,
   })),
   onClose: propTypes.func,
-  update: propTypes.func
+  addNotes: propTypes.func,
 };
 
-export default AllStudents
+export default AllStudents;

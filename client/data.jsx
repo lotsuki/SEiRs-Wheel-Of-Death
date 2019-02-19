@@ -1,4 +1,3 @@
-import React from 'react'
 
 const replacementPics = [
   'https://i.imgur.com/EvEgy19.jpg',

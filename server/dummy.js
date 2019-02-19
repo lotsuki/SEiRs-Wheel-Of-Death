@@ -7,24 +7,22 @@ const path = require('path');
 
 const seedPath = path.join(__dirname, '../DB/dummyData.json');
 
-const number = function() {
-  return Math.floor(Math.random() * 10);
-};
+const number = () => Math.floor(Math.random() * 10);
 
-const seedData = function() {
-  let data = [];
-  let num = 1
+const seedData = () => {
+  const data = [];
+  let num = 1;
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 50; i += 1) {
     data.push({
       id: num,
       name: [faker.fake('{{name.firstName}}'), faker.fake('{{name.lastName}}')],
       profilePic: faker.fake('{{image.avatar}}'),
       lastCalled: faker.fake('{{date.past}}'),
       timesCalled: number(),
-      notes: [undefined]
+      notes: [undefined],
     });
-    num++
+    num += 1;
   }
   return data;
 };
@@ -33,6 +31,6 @@ const seedData = function() {
 const seed = () => {
   const seeded = seedData();
   fs.writeFileSync(seedPath, JSON.stringify(seeded));
-}
+};
 
 seed();
