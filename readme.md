@@ -26,8 +26,8 @@ The fetch request on the client side sorts the data and stores it in state. From
 - [x] Convert to class component for modularity
 
 2. General
-- [o] CSS Styling, general flair
-- [ ] CSS Individual Student Cards
+- [x] CSS Styling, general flair
+- [x] CSS Individual Student Cards
 - [x] Fix CSS on Floating Navigation Bar
 - [ ] Add CSS to SortSelector Component (optional)
 - [ ] Write more tests! 
@@ -38,11 +38,11 @@ The fetch request on the client side sorts the data and stores it in state. From
 - [ ] Add tap to confirm call on student (increment timesCalled counter)
 - [ ] Wheel animation
 - [ ] We could make a component that generates an exportable randomized list, for things like deciding student presentation order
-- [ ] Add feature to allow for adding Notes to student cards (will require put/patch route on back end)
+- [x] Add feature to allow for adding Notes to student cards (will require put/patch route on back end)
  
 #### Back End
 - [ ] Build out DB (redis)
 - [ ] Add API routes for patch/update (updating timesCalled/lastCalled)
-- [x] Add method for uploading .csv/.tsv files (Added method on Front End, but it only sends an alert)
+- [x] Add method for uploading .csv/.tsv files (Added method on Front End, but it only sends an alert to confirm receipt)
 - [ ] Write method/DB model to send .csv/.tsv file to populate DB 
 
