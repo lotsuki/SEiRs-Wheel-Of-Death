@@ -1,4 +1,3 @@
-
 #root {
   max-width: 75%;
   margin: auto;
@@ -32,12 +31,13 @@
 }
 
 .button-row {
+  /* font-size: calc(12px + 1vw); */
   font-size: 24px;
   background-color: whitesmoke;
   padding: 0.4em;
   margin: 10px;
   box-shadow: 0 0 3px black;
-  width: 325px;
+  width: 15em;
   display: flex;
   cursor: pointer;
   white-space: nowrap;
@@ -66,6 +66,7 @@
 }
 
 .navigation-other {
+  /* font-size: calc(12px + 1vw); */
   font-size: 24px;
   background-color: whitesmoke;
   padding: 0.4em;

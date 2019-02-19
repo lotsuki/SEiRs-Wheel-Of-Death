@@ -12,12 +12,12 @@ import SortSelector from './SortSelector.jsx';
 
 class AllStudents extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      students: this.props.items,
-      studentsToShow: 10,
-      currentDisplay: this.props.items.slice(0, 10),
-    }
+      allStudents: this.props.items,
+      studentsToShow: 12,
+      currentDisplay: this.props.items.slice(0, 12),
+    };
     this.nextTenStudents = this.nextTenStudents.bind(this);
     this.searchStudents = this.searchStudents.bind(this);
     this.scrollToTop = this.scrollToTop.bind(this);
@@ -50,7 +50,7 @@ class AllStudents extends React.Component {
     });
     this.setState({
       studentsToShow: 0,
-      currentDisplay: searchResults.slice(0, 10)
+      currentDisplay: searchResults.slice(0, 12)
     });
   }
 
@@ -67,8 +67,8 @@ class AllStudents extends React.Component {
       sorted.sort((a, b) => { return new Date(a[param]) - new Date(b[param]) });
     };
     this.setState({
-      students: sorted,
-      currentDisplay: sorted.slice(0, 10)
+      allStudents: sorted,
+      currentDisplay: sorted.slice(0, 12)
     })
   }
 
@@ -79,7 +79,7 @@ class AllStudents extends React.Component {
       <div className = "floating-container">
         <i className={['fas fa-home', 'btn-home'].join(' ')} onClick={onClose} title="Home"></i>
         <Search search={this.searchStudents}/>
-        <i className={['fas fa-arrow-circle-right', 'btn-next'].join(' ')} onClick={this.nextTenStudents} title="Next 10 Results"></i>
+        <i className={['fas fa-arrow-circle-right', 'btn-next'].join(' ')} onClick={this.nextTenStudents} title="Next 12 Results"></i>
         <SortSelector sortSelect={this.sortStudents}/>
       </div>
         {this.state.currentDisplay.map(item => <StudentCard data={item} key={item.id} id={item.id} addNotes={addNotes}/> )}

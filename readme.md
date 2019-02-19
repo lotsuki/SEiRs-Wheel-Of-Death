@@ -28,6 +28,8 @@ Server has one route set up, it fetches data from the generated dummyData.json f
 - [ ] Write more tests! 
 - [ ] Also fix tests I've broken by changing things.
 - [ ] Set up CircleCI integration
+- [ ] Optimize display for mobile - https://css-tricks.com/fun-viewport-units/
+- [ ] Add Animations - https://www.npmjs.com/package/react-animated-css or https://github.com/reactjs/react-transition-group
 
 3. Optional Front End To Do
 - [ ] Add tap to confirm call on student (increment timesCalled counter)
