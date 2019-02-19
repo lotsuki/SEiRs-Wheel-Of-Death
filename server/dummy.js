@@ -19,7 +19,7 @@ const seedData = function() {
     data.push({
       id: num,
       name: [faker.fake('{{name.firstName}}'), faker.fake('{{name.lastName}}')],
-      profilePic: faker.fake('{{image.avatar}}'),
+      // profilePic: faker.fake('{{image.avatar}}'),
       lastCalled: faker.fake('{{date.past}}'),
       timesCalled: number()
     });

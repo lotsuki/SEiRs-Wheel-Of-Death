@@ -13,7 +13,7 @@
   justify-content: center;
   white-space: nowrap
 }
-
+/* Switch to flexbox column, adjust other settings for better display on smaller screens */
 @media only screen and (max-width: 1000px) {
   .navigation-main {
     display: flex;
@@ -22,8 +22,10 @@
     justify-content: center;
     white-space: nowrap
   }
-  .navigation-other {
-    max-width: 100px;
+}
+@media only screen and (max-width: 600px) {
+  #root {
+    max-width: 100%;
   }
 }
 
@@ -36,7 +38,6 @@
   width: 325px;
   display: flex;
   cursor: pointer;
-  font-family: 'Oxygen', sans-serif;
   white-space: nowrap;
 }
 
@@ -76,13 +77,13 @@
 .floating-container {
   background-color: lightgrey;
   opacity: 50;
-  height: 70px;
+  height: 80px;
   width: 335px;
   box-shadow: 0 0 3px black;
   position: fixed;
   top: 5%;
   left: 50%;
-  margin-top: -35px; /* Negative half of height for exact center. */
+  margin-top: -40px; /* Negative half of height for exact center. */
   margin-left: -167.5px; /* Negative half of width. */
   display: flex;
   flex-direction: row;
@@ -91,13 +92,13 @@
   justify-content: center;
 }
 
-.btn-fixed {
+.btn-home {
   font-size: x-large;
   display: flex;
   margin-right: 5%;
   margin-top: 5%;
 }
-.btn-fixed:hover {
+.btn-home:hover {
   outline: auto;
 }
 
@@ -115,6 +116,7 @@
   width: 230px;
   height: 30px;
   display: flex;
+  margin-top: 5%;
 }
 
 

@@ -28,8 +28,8 @@ The fetch request on the client side sorts the data and stores it in state. From
 2. General
 - [o] CSS Styling, general flair
 - [ ] CSS Individual Student Cards
-- [ ] Fix CSS on Floating Navigation Bar
-- [ ] Add CSS to SortSelector Component
+- [x] Fix CSS on Floating Navigation Bar
+- [ ] Add CSS to SortSelector Component (optional)
 - [ ] Write more tests! 
 - [ ] Also fix tests I've broken by changing things.
 - [ ] Set up CircleCI integration
@@ -38,7 +38,7 @@ The fetch request on the client side sorts the data and stores it in state. From
 - [ ] Add tap to confirm call on student (increment timesCalled counter)
 - [ ] Wheel animation
 - [ ] We could make a component that generates an exportable randomized list, for things like deciding student presentation order
-- [ ] Add feature to allow for adding Notes to student cards
+- [ ] Add feature to allow for adding Notes to student cards (will require put/patch route on back end)
  
 #### Back End
 - [ ] Build out DB (redis)
