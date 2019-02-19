@@ -97,28 +97,20 @@ class App extends React.Component {
   //Super hacky, I'll clean this up later. But we are currently allowing for adding notes to the end of cards.
   updateStudentData(event) {
     let id;
-    if (event.target.id) {
-       id = event.target.id 
-    } else { 
-      if (!event.target.id) {
-        id = event.target.parentNode.id 
-    } else { 
-      if (!event.target.parentNode.id) { 
-        id = event.target.childNode.id 
-      }
+    (event.target.id) ? id = event.target.id : id = event.target.parentNode.id || event.target.childNode.id
+    const oldState = this.state.students;
+    const oldStudentData = this.state.students.find((student) => {
+      return student.id == id
+    })
+    console.log(oldStudentData)
+    const newData = prompt(`Enter notes for student, ${oldStudentData.name}`);
+    if (newData !== null) {
+      oldStudentData.notes.push(`${(oldStudentData.notes.length - 1) + 1}.` + newData + " ");
+      oldState.forEach((student) => { if (student.id == id) { student = oldStudentData }})
+      this.setState({
+        students: oldState
+      })
     }
-  }  
-  let oldState = this.state.students;
-  let oldStudentData = this.state.students.find((student) => {
-    return student.id == id
-  })
-  console.log(oldStudentData)
-  const newData = prompt(`Enter notes for student, ${oldStudentData.name}`);
-  oldStudentData.notes.push(newData + '\r\n');
-  oldState.forEach((student) => { if (student.id == id) { student = oldStudentData }})
-  this.setState({
-    students: oldState
-  })
   }
 
   render() {
@@ -130,8 +122,8 @@ class App extends React.Component {
     }
     if (this.state.view === 'card') { 
       return ( 
-      <div>
-        <button className="btn-back" onClick={this.viewHome}>Back</button>
+      <div className="div-btn-holder">
+        <i className={["fas fa-home fa-5x", "btn-back"].join(' ')} onClick={this.viewHome} title="Home"></i>
         <StudentCard data={this.state.picked} update={this.updateStudentData}/>
       </div> 
       ) 

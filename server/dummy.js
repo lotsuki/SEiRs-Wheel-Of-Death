@@ -22,7 +22,7 @@ const seedData = function() {
       profilePic: faker.fake('{{image.avatar}}'),
       lastCalled: faker.fake('{{date.past}}'),
       timesCalled: number(),
-      notes: [" "]
+      notes: [undefined]
     });
     num++
   }

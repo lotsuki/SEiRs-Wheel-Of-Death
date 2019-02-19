@@ -2,13 +2,8 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 
-// TO DO
-// Wrap student card in div, move button to outside div and change to home icon
-// Center student card?
-// Time to start prettying up this app
-
 const StudentCard = ({ update, data: { id, name, profilePic, lastCalled, timesCalled, notes }  }) => (
-  <ul className = 'student-card' onClick={update} id={id}>
+  <ul className = 'student-card' onClick={update} id={id} title="Tap to add student notes!">
       <div className = 'card-name'>{name}</div>
       <hr></hr>
       <img className = 'card-profile' src={profilePic}></img>
@@ -23,6 +18,7 @@ const StudentCard = ({ update, data: { id, name, profilePic, lastCalled, timesCa
   </ul>
 );
 
+
 StudentCard.propTypes = {
   data: propTypes.shape({
     name: propTypes.string.isRequired,
@@ -30,7 +26,7 @@ StudentCard.propTypes = {
     lastCalled: propTypes.string.isRequired,
     timesCalled: propTypes.number.isRequired
   }),
-  update: propTypes.func.isRequired
+  update: propTypes.func
 };
 
 export default StudentCard;

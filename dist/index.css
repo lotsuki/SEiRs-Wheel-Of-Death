@@ -143,6 +143,8 @@
   display: flex;
   flex-direction: column;
   font-family: 'Raleway', sans-serif;
+  white-space: pre-wrap;
+  text-align: center;
 }
 
 .card-name {
@@ -174,18 +176,29 @@ p {
   font-weight: 600;
 }
 
-
+.div-btn-holder {
+  text-align: center;
+}
 
 .btn-back {
-  position: fixed;
-  width: 100px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  max-width: 150px;
+  transition-duration: 0.2s;
+  /* width: 100px;
   height: 50px;
   left: 50%;
   top: 45%;
   margin-left: -50px;
   margin-top: -25px;
-  background-color: whitesmoke;
+  margin-bottom: 5%; */
+  /* background-color: whitesmoke;
   color: black;
+  border: 2px solid #e7e7e7;
+  box-shadow: 0 0 1px black; */
+}
+.btn-back:hover {
   border: 2px solid #e7e7e7;
   box-shadow: 0 0 1px black;
 }
