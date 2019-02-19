@@ -56,6 +56,7 @@
   top: 75px;
   padding: 5px;
   display: flex;
+  margin-top: 15%;
   justify-content: space-evenly;
   flex-wrap: wrap;
   align-content: center;
@@ -93,7 +94,11 @@
   flex-wrap: wrap;
   align-content: space-around;
   justify-content: center;
-
+}
+@media only screen and (max-height: 900px) {
+  .floating-container {
+    top: 7%;
+  }
 }
 
 .btn-home {

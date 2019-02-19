@@ -82,7 +82,7 @@ class AllStudents extends React.Component {
         <i className={["fas fa-arrow-circle-right", "btn-next"].join(' ')} onClick={this.nextTenStudents} title="Next 10 Results"></i>
         <SortSelector sortSelect={this.sortStudents}/>
       </div>
-        {this.state.currentDisplay.map(item => <StudentCard data={item} key={item.id}/> )}
+        {this.state.currentDisplay.map(item => <StudentCard data={item} key={item.id} id={item.id}/> )}
     </div>
     )
   }

@@ -22,6 +22,7 @@ class App extends React.Component {
     this.viewHome = this.viewHome.bind(this);
     this.viewAll = this.viewAll.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
+    this.updateStudentData = this.updateStudentData.bind(this);
   };
 
   componentDidMount() {
@@ -93,6 +94,33 @@ class App extends React.Component {
     reader.readAsText(files[0]);
 }
 
+  //Super hacky, I'll clean this up later. But we are currently allowing for adding notes to the end of cards.
+  updateStudentData(event) {
+    let id;
+    if (event.target.id) {
+       id = event.target.id 
+    } else { 
+      if (!event.target.id) {
+        id = event.target.parentNode.id 
+    } else { 
+      if (!event.target.parentNode.id) { 
+        id = event.target.childNode.id 
+      }
+    }
+  }  
+  let oldState = this.state.students;
+  let oldStudentData = this.state.students.find((student) => {
+    return student.id == id
+  })
+  console.log(oldStudentData)
+  const newData = prompt(`Enter notes for student, ${oldStudentData.name}`);
+  oldStudentData.notes.push(newData + '\r\n');
+  oldState.forEach((student) => { if (student.id == id) { student = oldStudentData }})
+  this.setState({
+    students: oldState
+  })
+  }
+
   render() {
     if (this.state.isLoading) {
       return ( <Spinner /> ) 
@@ -104,7 +132,7 @@ class App extends React.Component {
       return ( 
       <div>
         <button className="btn-back" onClick={this.viewHome}>Back</button>
-        <StudentCard data={this.state.picked}/>
+        <StudentCard data={this.state.picked} update={this.updateStudentData}/>
       </div> 
       ) 
     }
