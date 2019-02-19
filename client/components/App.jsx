@@ -122,14 +122,14 @@ class App extends React.Component {
     }
     if (this.state.view === 'card') { 
       return ( 
-      <div className="div-btn-holder">
+      <div>
         <i className={["fas fa-home fa-5x", "btn-back"].join(' ')} onClick={this.viewHome} title="Home"></i>
-        <StudentCard data={this.state.picked} update={this.updateStudentData}/>
+        <StudentCard data={this.state.picked} addNotes={this.updateStudentData}/>
       </div> 
       ) 
     }
     if (this.state.view === 'all') {
-      return ( <AllStudents onClose={this.viewHome} items={this.state.students}/> )
+      return ( <AllStudents onClose={this.viewHome} items={this.state.students} addNotes={this.updateStudentData}/> )
     }
   }
 };

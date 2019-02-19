@@ -2,8 +2,8 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 
-const StudentCard = ({ update, data: { id, name, profilePic, lastCalled, timesCalled, notes }  }) => (
-  <ul className = 'student-card' onClick={update} id={id} title="Tap to add student notes!">
+const StudentCard = ({ addNotes, data: { id, name, profilePic, lastCalled, timesCalled, notes }  }) => (
+  <ul className = 'student-card' onClick={addNotes} id={id} title="Tap to add student notes!">
       <div className = 'card-name'>{name}</div>
       <hr></hr>
       <img className = 'card-profile' src={profilePic}></img>
@@ -26,7 +26,7 @@ StudentCard.propTypes = {
     lastCalled: propTypes.string.isRequired,
     timesCalled: propTypes.number.isRequired
   }),
-  update: propTypes.func
+  addNotes: propTypes.func
 };
 
 export default StudentCard;

@@ -73,7 +73,7 @@ class AllStudents extends React.Component {
   }
 
   render() {
-    const {onClose} = this.props;
+    const {onClose, addNotes} = this.props;
     return(
     <div className = "all-container">
       <div className = "floating-container">
@@ -82,7 +82,7 @@ class AllStudents extends React.Component {
         <i className={["fas fa-arrow-circle-right", "btn-next"].join(' ')} onClick={this.nextTenStudents} title="Next 10 Results"></i>
         <SortSelector sortSelect={this.sortStudents}/>
       </div>
-        {this.state.currentDisplay.map(item => <StudentCard data={item} key={item.id} id={item.id}/> )}
+        {this.state.currentDisplay.map(item => <StudentCard data={item} key={item.id} id={item.id} addNotes={addNotes}/> )}
     </div>
     )
   }
@@ -98,6 +98,7 @@ AllStudents.propTypes = {
     timesCalled: propTypes.number.isRequired
   })),
   onClose: propTypes.func,
+  update: propTypes.func
 };
 
 export default AllStudents
