@@ -7,7 +7,7 @@ import propTypes from 'prop-types';
 // Center student card?
 // Time to start prettying up this app
 
-const StudentCard = ({ onClose, data: { name, profilePic, lastCalled, timesCalled }  }) => (
+const StudentCard = ({ data: { name, profilePic, lastCalled, timesCalled }  }) => (
   <ul className = 'student-card'>
       <div className = 'card-name'>{name}</div>
       <img className = 'card-profile' src={profilePic}></img>
@@ -17,7 +17,6 @@ const StudentCard = ({ onClose, data: { name, profilePic, lastCalled, timesCalle
                         month: 'short', 
                       })} </p>
       <p>Times Called: {timesCalled}</p>
-    {(onClose) ? <button onClick = { onClose }> Back </button> : null}
   </ul>
 );
 
@@ -27,8 +26,7 @@ StudentCard.propTypes = {
     profilePic: propTypes.string.isRequired,
     lastCalled: propTypes.string.isRequired,
     timesCalled: propTypes.number.isRequired
-  }),
-  onClose: propTypes.func
+  })
 };
 
 export default StudentCard;

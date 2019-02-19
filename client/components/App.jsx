@@ -99,7 +99,12 @@ class App extends React.Component {
       return ( <Navigation pickRandom={this.pickRandomStudent} pickLeast={this.leastPickedStudent} viewAll={this.viewAll} handleFiles={this.uploadFile}/> );
     }
     if (this.state.view === 'card') { 
-      return ( <StudentCard onClose={this.viewHome} data={this.state.picked}/> ) 
+      return ( 
+      <div>
+        <button onClick={this.viewHome}>Back</button>
+        <StudentCard data={this.state.picked}/>
+      </div> 
+      ) 
     }
     if (this.state.view === 'all') {
       return ( <AllStudents onClose={this.viewHome} items={this.state.students}/> )

@@ -11,18 +11,33 @@
   flex-direction: row;
   align-content: center;
   justify-content: center;
+  white-space: nowrap
+}
+
+@media only screen and (max-width: 1000px) {
+  .navigation-main {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    white-space: nowrap
+  }
+  .navigation-other {
+    max-width: 100px;
+  }
 }
 
 .button-row {
-  font-size: 1.4vw;
+  font-size: 24px;
   background-color: whitesmoke;
   padding: 0.4em;
   margin: 10px;
   box-shadow: 0 0 3px black;
-  width: 25%;
-  display: inline-block;
+  width: 325px;
+  display: flex;
   cursor: pointer;
   font-family: 'Oxygen', sans-serif;
+  white-space: nowrap;
 }
 
 .navigation-item {
@@ -45,13 +60,14 @@
 }
 
 .navigation-other {
-  font-size: 1.5vw;
+  font-size: 24px;
   background-color: whitesmoke;
   padding: 0.4em;
   margin: 10px;
   box-shadow: 0 0 3px black;
   display: inline-block;
   cursor: pointer;
+  width: fit-content;
 }
 
 
@@ -68,21 +84,28 @@
   left: 50%;
   margin-top: -35px; /* Negative half of height for exact center. */
   margin-left: -167.5px; /* Negative half of width. */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: center;
 }
 
 .btn-fixed {
-  top: 32px;
-  left: 25px;
   font-size: x-large;
+  display: flex;
+  margin-right: 5%;
+  margin-top: 5%;
 }
 .btn-fixed:hover {
   outline: auto;
 }
 
 .btn-next {
-  top: 32px;
-  left: 311px;
   font-size: x-large;
+  display: flex;
+  margin-left: 5%;
+  margin-top: 5%;
 }
 .btn-next:hover {
   outline: auto;
@@ -91,11 +114,7 @@
 .floating-search {
   width: 230px;
   height: 30px;
-  top: 4.5%;
-  left: 50%;
-  position: fixed;
-  margin-top: -15px;
-  margin-left: -115px;
+  display: flex;
 }
 
 
