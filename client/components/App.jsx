@@ -86,8 +86,8 @@ class App extends React.Component {
     const reader = new FileReader();
     reader.onload = (e) => {
       // Use reader.result
-      alert(reader.result)
-    }
+      alert(reader.result) //eslint-disable-line
+    };
     reader.readAsText(files[0]);
   }
 

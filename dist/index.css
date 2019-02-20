@@ -132,20 +132,18 @@
   display: flex;
   margin-right: 5%;
   margin-top: 5%;
+  cursor: pointer;
 }
-.btn-home:hover {
-  box-shadow: 0 0 1px black;
-}
+
 
 .btn-next {
   font-size: x-large;
   display: flex;
   margin-left: 5%;
   margin-top: 5%;
+  cursor: pointer;
 }
-.btn-next:hover {
-  outline: auto;
-}
+
 
 .floating-search {
   width: 230px;
@@ -171,6 +169,7 @@
   font-family: 'Raleway', sans-serif;
   white-space: pre-wrap;
   text-align: center;
+  cursor: help;
 }
 
 .card-name {
@@ -225,7 +224,7 @@ p {
   box-shadow: 0 0 1px black; */
 }
 .btn-back:hover {
-  font-size: xx-large;
+  box-shadow: 0 0 1px black;
 }
 
 span {
