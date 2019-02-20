@@ -106,7 +106,7 @@
   width: 335px;
   box-shadow: 0 0 3px black;
   position: fixed;
-  top: 5%;
+  top: 5.5%;
   left: 50%;
   margin-top: -40px; /* Negative half of height for exact center. */
   margin-left: -167.5px; /* Negative half of width. */
@@ -116,9 +116,14 @@
   align-content: space-around;
   justify-content: center;
 }
-@media only screen and (max-height: 900px) {
+@media only screen and (max-height: 850px) {
   .floating-container {
-    top: 7%;
+    top: 7.5%;
+  }
+}
+@media only screen and (max-height: 650px) {
+  .floating-container {
+    top: 10%;
   }
 }
 
@@ -129,7 +134,7 @@
   margin-top: 5%;
 }
 .btn-home:hover {
-  outline: auto;
+  box-shadow: 0 0 1px black;
 }
 
 .btn-next {
@@ -220,8 +225,7 @@ p {
   box-shadow: 0 0 1px black; */
 }
 .btn-back:hover {
-  border: 2px solid #e7e7e7;
-  box-shadow: 0 0 1px black;
+  font-size: xx-large;
 }
 
 span {

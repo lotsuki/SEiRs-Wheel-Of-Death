@@ -10,7 +10,7 @@ import dummyData from '../../../DB/dummyData.json';
 describe('App Component', () => {
   const wrapper = render(<App />);
   it('Should render and match Snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Should not render anything besides the Spinner while isLoading state is active', () => {

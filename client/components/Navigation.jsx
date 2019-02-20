@@ -16,7 +16,7 @@ const Navigation = ({ pickRandom, pickLeast, viewAll, handleFiles }) => (
       </li>
       <li className="button-row" onClick={viewAll}>
         <i className={['fas fa-users', 'navigation-item'].join(' ')}></i>
-        See All Students
+        See All Student Info
       </li>
       <li className="navigation-other" title="Upload New Class">
         <ReactFileReader handleFiles={handleFiles} fileTypes={['.csv', '.tsv']}>
@@ -24,7 +24,6 @@ const Navigation = ({ pickRandom, pickLeast, viewAll, handleFiles }) => (
         </ReactFileReader>
       </li>
     </ul>
-
   </div>
 );
 
