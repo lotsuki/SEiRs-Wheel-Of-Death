@@ -204,10 +204,12 @@
 }
 
 .card-name {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 900;
   align-self: center;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
+  margin-top: 2%;
+
 }
 
 .card-profile {

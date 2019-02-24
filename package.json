@@ -8,7 +8,7 @@
     "start": "nodemon server/index.js",
     "seed": "node server/dummy.js",
     "test": "jest -t",
-    "testc": "jest --coverage --collectCoverageFrom=client/**/*.{js,jsx}"
+    "testc": "jest --coverage"
   },
   "repository": {
     "type": "git",

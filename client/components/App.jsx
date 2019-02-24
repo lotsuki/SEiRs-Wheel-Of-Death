@@ -101,7 +101,7 @@ class App extends React.Component {
     });
     const newData = prompt(`Enter notes for student, ${oldStudentData.name}`);
     if (newData !== null) {
-      oldStudentData.notes.push(`${(oldStudentData.notes.length - 1) + 1}.` + newData + " ");
+      oldStudentData.notes.push(`${(oldStudentData.notes.length - 1) + 1}. ${newData} \r\n`);
       oldState.forEach((student) => { if (student.id == id) { student = oldStudentData; } });
       this.setState({
         students: oldState,
