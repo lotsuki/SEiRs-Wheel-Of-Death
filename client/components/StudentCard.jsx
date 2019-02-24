@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 
 const StudentCard = ({ addNotes, data: { id, name, profilePic, lastCalled, timesCalled, notes } }) => (
-  <ul className = {['student-card', 'animated', 'fadeInDown'].join(' ')} onClick={addNotes} id={id} title="Tap to add student notes!">
+  <ul className = {'student-card'} onClick={addNotes} id={id} title="Tap to add student notes!">
       <div className = 'card-name'>{name}</div>
       <hr></hr>
       <img className = 'card-profile' src={profilePic}></img>

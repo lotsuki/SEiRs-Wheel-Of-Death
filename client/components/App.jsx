@@ -91,7 +91,8 @@ class App extends React.Component {
     reader.readAsText(files[0]);
   }
 
-  // Super hacky, I'll clean this up later. But we are currently allowing for adding notes to the end of cards.
+  // Super hacky, will need to be overhauled later once the DB is set up.
+  // But we are currently allowing for adding notes to the end of cards.
   updateStudentData(event) {
     let id;
     (event.target.id) ? id = event.target.id : id = event.target.parentNode.id || event.target.childNode.id
