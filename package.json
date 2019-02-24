@@ -9,7 +9,7 @@
     "seed": "node server/dummy.js",
     "test": "jest -t",
     "testc": "jest --coverage",
-    "tests": "jest /client/components/__tests__/AllStudents.test.jsx" 
+    "tests": "jest /client/components/__tests__/AllStudents.test.jsx"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "prop-types": "^15.7.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-file-reader": "^1.1.4",
