@@ -28,10 +28,10 @@ const Navigation = ({ pickRandom, pickLeast, viewAll, handleFiles }) => (
 );
 
 Navigation.propTypes = {
-  pickRandom: propTypes.func.isRequired,
-  pickLeast: propTypes.func.isRequired,
-  viewAll: propTypes.func.isRequired,
-  handleFiles: propTypes.func.isRequired,
+  pickRandom: propTypes.func,
+  pickLeast: propTypes.func,
+  viewAll: propTypes.func,
+  handleFiles: propTypes.func,
 };
 
 export default Navigation;

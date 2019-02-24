@@ -57,19 +57,19 @@ class AllStudents extends React.Component {
   sortStudents(event) {
     const param = event.target.value;
     const sorted = this.state.students;
-    if (param === 'timesCalled') { 
-      sorted.sort((a, b) => { return a[param] - b[param] });
-    };
-    if (param === 'name') { 
-      sorted.sort((a, b) => { return a[param].toUpperCase() > b[param].toUpperCase() ? 1 : -1 });
-    };
-    if (param === 'lastCalled') {  
-      sorted.sort((a, b) => { return new Date(a[param]) - new Date(b[param]) });
-    };
+    if (param === 'timesCalled') {
+      sorted.sort((a, b) => { return a[param] - b[param]; });
+    }
+    if (param === 'name') {
+      sorted.sort((a, b) => { return a[param].toUpperCase() > b[param].toUpperCase() ? 1 : -1; });
+    }
+    if (param === 'lastCalled') {
+      sorted.sort((a, b) => { return new Date(a[param]) - new Date(b[param]); });
+    }
     this.setState({
       allStudents: sorted,
-      currentDisplay: sorted.slice(0, 12)
-    })
+      currentDisplay: sorted.slice(0, 12),
+    });
   }
 
   render() {

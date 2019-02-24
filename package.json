@@ -8,7 +8,8 @@
     "start": "nodemon server/index.js",
     "seed": "node server/dummy.js",
     "test": "jest -t",
-    "testc": "jest --coverage"
+    "testc": "jest --coverage",
+    "tests": "jest /client/components/__tests__/AllStudents.test.jsx" 
   },
   "repository": {
     "type": "git",
