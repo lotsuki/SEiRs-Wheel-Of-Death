@@ -18,12 +18,19 @@ app.use(cors());
 app.get('/students', function (req, res) {
   //DB query, get all students
   const studentData = seedData;
-  res.send(studentData)
+  res.send(studentData);
 });
 
 app.get('/students/leastpicked', function (req, res) {
   //DB query, find one and update
   
+});
+
+// Allows for the update of how many times a student has been called
+app.post('/student/:studentId', function (req, res) {
+  let {studentId} = req.params;
+  seedData[studentId - 1].timesCalled++;
+  res.sendStatus(202);
 });
 
 app.listen(PORT, () => {
