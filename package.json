@@ -4,7 +4,12 @@
   "description": "A name wheel picker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack -d --watch",
+    "start": "nodemon server/index.js",
+    "seed": "node server/dummy.js",
+    "test": "jest -t",
+    "testc": "jest --coverage",
+    "tests": "jest /client/components/__tests__/AllStudents.test.jsx"
   },
   "repository": {
     "type": "git",
@@ -20,14 +25,40 @@
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "animate.css": "^3.7.0",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.5",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "prop-types": "^15.7.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
+    "react-file-reader": "^1.1.4",
+    "react-scroll": "^1.7.11",
     "webpack": "^4.29.2",
     "webpack-cli": "^3.2.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.1.0",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-react": "^7.12.4",
+    "faker": "^4.1.0",
+    "jest": "^24.1.0",
+    "jest-cli": "^24.1.0",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "jest": {
+    "verbose": true,
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
+    ]
   }
 }

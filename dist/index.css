@@ -1,0 +1,282 @@
+#root {
+  max-width: 75%;
+  margin: auto;
+}
+
+
+/* *********************** Main Menu ************************* */
+
+.navigation-main {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+/* Switch to flexbox column, adjust other settings for better display on smaller screens */
+@media only screen and (max-width: 1000px) {
+  .navigation-main {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #root {
+    max-width: 100%;
+  }
+}
+
+.button-row {
+  /* font-size: calc(12px + 1vw); */
+  font-size: 24px;
+  background-color: whitesmoke;
+  padding: 0.4em;
+  margin: 10px;
+  box-shadow: 0 0 3px black;
+  width: calc(250px + 5vw);
+  min-width: 330px;
+  display: flex;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Raleway', sans-serif;
+}
+
+.navigation-item {
+  margin-right: 0.8em;
+  margin-left: 0.4em;
+  margin-top: 0.1em;
+}
+
+
+
+.all-container {
+  position: relative;
+  top: 75px;
+  padding: 5px;
+  display: flex;
+  margin-top: 15%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: auto;
+  max-width: 80%;
+}
+
+.navigation-other {
+  /* font-size: calc(12px + 1vw); */
+  font-size: 24px;
+  background-color: whitesmoke;
+  padding: 0.4em;
+  margin: 10px;
+  box-shadow: 0 0 3px black;
+  display: inline-block;
+  cursor: pointer;
+  width: fit-content;
+}
+
+
+/* ********************** Floating Navigation Menu ********************* */
+
+.floating-container {
+  background-color: whitesmoke;
+  opacity: 50;
+  height: 80px;
+  width: 335px;
+  box-shadow: 0 0 3px black;
+  position: fixed;
+  top: 5.5%;
+  left: 50%;
+  margin-top: -40px; /* Negative half of height for exact center. */
+  margin-left: -167.5px; /* Negative half of width. */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: center;
+}
+@media only screen and (max-height: 850px) {
+  .floating-container {
+    top: 7.5%;
+  }
+}
+@media only screen and (max-height: 650px) {
+  .floating-container {
+    top: 10%;
+  }
+}
+
+.btn-home {
+  font-size: x-large;
+  display: flex;
+  margin-right: 5%;
+  margin-top: 5%;
+  cursor: pointer;
+}
+
+
+.btn-next {
+  font-size: x-large;
+  display: flex;
+  margin-left: 5%;
+  margin-top: 5%;
+  cursor: pointer;
+}
+
+
+.floating-search {
+  width: 230px;
+  height: 30px;
+  display: flex;
+  margin-top: 5%;
+}
+
+
+
+/* ************************** Individual Card ************************* */
+
+.student-card {
+  background-color: whitesmoke;
+  padding: 0.4em;
+  margin: auto;
+  margin-block-start: 1.5em;
+  margin-block-end: 1.5em;
+  box-shadow: 0 0 3px black;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Raleway', sans-serif;
+  white-space: pre-wrap;
+  text-align: center;
+  cursor: help;
+}
+
+.card-name {
+  font-size: 24px;
+  font-weight: 900;
+  align-self: center;
+  margin-bottom: 3%;
+  margin-top: 2%;
+}
+
+.card-profile {
+  height: 150px;
+  width: 150px;
+  align-self: center;
+  border: 3px solid white;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+p {
+  font-weight: 600;
+}
+
+.div-btn-holder {
+  text-align: center;
+}
+
+.btn-back {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1%;
+  cursor: pointer;
+  max-width: 70px;
+  transition-duration: 0.2s;
+  font-size: 62px;
+  /* width: 100px;
+  height: 50px;
+  left: 50%;
+  top: 45%;
+  margin-left: -50px;
+  margin-top: -25px;
+  margin-bottom: 5%; */
+  /* background-color: whitesmoke;
+  color: black;
+  border: 2px solid #e7e7e7;
+  box-shadow: 0 0 1px black; */
+}
+.btn-back:hover {
+  box-shadow: 0 0 1px black;
+}
+
+span {
+  text-align: left;
+}
+
+/* Mobile Device optimization */
+/* Need to use !important because media queries otherwise are overwritten. Next time design for mobile first! */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+
+    /* Navigation Component */
+    .button-row {
+      font-size: 50px;
+      width: auto;
+      margin-right: 10%;
+      margin-top: 3%;
+    }
+    .navigation-other {
+      margin-top: 3% !important;
+      font-size: 50px !important;
+    }
+    #root {
+      max-width: 100% !important;
+    }
+
+    /* Cards and Container */
+    .all-container {
+      max-width: 100% !important;
+    }
+    .student-card {
+      width: 60% !important;
+      height: 75% !important;
+      font-size: 36px;
+    }
+    .card-profile {
+      height: 300px !important;
+      width: 300px !important;
+    }
+    .card-name {
+    font-size: 50px !important;
+    }
+    .btn-back {
+      margin-top: 3% !important;
+      font-size: 125px !important;
+      max-width: 125px !important;
+    }
+
+    /* Floating Nav Bar */
+    .floating-container {
+      visibility: hidden;
+    }
+    .btn-home {
+      visibility: visible !important;
+      position: fixed !important;
+      font-size: 75px !important;
+      left: 5%;
+    }
+    .btn-next {
+      visibility: visible !important;
+      position: fixed !important;
+      font-size: 75px !important;
+      right: 5%;
+    }
+    .floating-search {
+      visibility: visible !important;
+      width: 450px !important;
+      height: 65px !important;
+      margin-bottom: 2% !important;
+      margin-top: 2% !important;
+      font-size: 30px;
+    }
+}
