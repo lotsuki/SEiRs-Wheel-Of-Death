@@ -6,7 +6,7 @@ const redis = require('redis');
 const PORT = process.env.PORT || 3000;
 import client from '../DB/redis.js';
 
-
+const numOfStudentsNotCalledYet;
 // Temp script to generate data for testing
 const seedData = require('../DB/dummyData.json');
 
@@ -18,17 +18,25 @@ app.use(bodyParser({extended: true}));
 app.use(cors());
 
 
+//GET ALL STUDENTS
 app.get('/students', function (req, res) {
-  //DB query, get all students
 
-  client.hgetall('students');
+  client.hgetall('students', function(err, object) {
+    if (err) { console.log('Could not get students: ', err); }
+    else { res.send(object); }
+  });
 
-  const studentData = seedData;
-  res.send(studentData)
 });
 
+//GET RANDOM STUDENT
 app.get('/students/leastpicked', function (req, res) {
-  //DB query, find one and update
+  const randomNum = Math.floor(Math.random() * numOfStudentsNotCalledYet);
+  const randomName = client.lindex('notCalledYet', randomNum);
+
+  client.hgetall(randomName, function(err, object) {
+    if (err) { console.log('Could not get random student: ', err); }
+    else { res.send(object); }
+  });
 
 });
 
@@ -38,18 +46,24 @@ app.post('/class/submit', function(req, res) {
 
 //If called, can add lastCalled and notes prop
   const studentNames = req.body;
-  const firstname = studentNames[i].firstname;
-  const lastName = studentNames[i].lastname;
-  for (var i = 0; i < studentNames; i++) {
-    client.hmset(`students`, {
+
+  for (var i = 0; i < studentNames.length; i++) {
+    client.hmset(`${studentNames[i]}`, {
       'id': `${i}`,
-      'firstname': firstname,
-      'lastname': lastName,
-      'profilePic': 'somePic',
-      'beenCalled': 'false'
+      'fullname': studentNames[i],
+      'profilePic': 'somePic'
+    }, function(err, reply) {
+      if (err) { console.log('Could not add class: ', err); }
+      else { console.log('Class added successfully!'); }
     });
 
-    client.rpush(['notCalledNames', `${firstname} ${lastname}`])
+    client.rpush([`notCalledYet`, studentNames[i]], function(err, reply) {
+      if (err) { console.log('Could not add student names', err) }
+      else {
+        numOfStudentsNotCalledYet = reply;
+        console.log('Names added:', reply);
+      }
+    });
   }
 });
 
