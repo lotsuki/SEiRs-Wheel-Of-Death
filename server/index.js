@@ -21,10 +21,7 @@ app.use(cors());
 //GET ALL STUDENTS
 app.get('/students', function (req, res) {
 
-  client.hgetall('students', function(err, object) {
-    if (err) { console.log('Could not get students: ', err); }
-    else { res.send(object); }
-  });
+  //TODO: need to install ioredis to get all hashes
 
 });
 
