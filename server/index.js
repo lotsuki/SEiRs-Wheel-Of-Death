@@ -64,6 +64,13 @@ app.post('/class/submit', function(req, res) {
   }
 });
 
+// Allows for the update of how many times a student has been called
+app.post('/student/:studentId', function (req, res) {
+  let {studentId} = req.params;
+  seedData[studentId - 1].timesCalled++;
+  res.sendStatus(202);
+});
+
 app.listen(PORT, () => {
   console.log(`App is listening on port: ${PORT}`);
 })
