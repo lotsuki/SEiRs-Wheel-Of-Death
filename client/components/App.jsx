@@ -4,6 +4,7 @@ import AllStudents from './AllStudents.jsx';
 import Spinner from './Spinner.jsx';
 import Navigation from './Navigation.jsx';
 import replacementPic from '../data.jsx';
+import Submit from './Submit.jsx';
 
 
 class App extends React.Component {
@@ -13,8 +14,9 @@ class App extends React.Component {
       students: [],
       picked: null,
       view: 'home',
-      isLoading: true,
-      error: null
+      isLoading: false,
+      error: null,
+      student: ''
     };
     this.pickRandomStudent = this.pickRandomStudent.bind(this);
     this.leastPickedStudent = this.leastPickedStudent.bind(this);
@@ -22,6 +24,8 @@ class App extends React.Component {
     this.viewAll = this.viewAll.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
     this.updateStudentData = this.updateStudentData.bind(this);
+    this.addStudent = this.addStudent.bind(this);
+    this.submitClass = this.submitClass.bind(this);
   }
 
   componentDidMount() {
@@ -108,12 +112,30 @@ class App extends React.Component {
     }
   }
 
+  addStudent(e) {
+    this.setState({
+      student: e.currentTarget.value
+    });
+  }
+
+  submitClass() {
+
+  }
+
   render() {
     if (this.state.isLoading) {
-      return (<Spinner />);
+      return (
+        <Spinner />
+      );
     }
     if (this.state.view === 'home') {
-      return (<Navigation pickRandom={this.pickRandomStudent} pickLeast={this.leastPickedStudent} viewAll={this.viewAll} handleFiles={this.uploadFile}/>);
+      console.log(this.state.students)
+      return (
+        <div>
+        <Navigation pickRandom={this.pickRandomStudent} pickLeast={this.leastPickedStudent} viewAll={this.viewAll} handleFiles={this.uploadFile}/>
+        <Submit addStudent={this.addStudent} submitClass={submitClass}/>
+        </div>
+      );
     }
     if (this.state.view === 'card') {
       return (
@@ -124,7 +146,9 @@ class App extends React.Component {
       );
     }
     if (this.state.view === 'all') {
-      return (<AllStudents onClose={this.viewHome} items={this.state.students} addNotes={this.updateStudentData}/>);
+      return (
+        <AllStudents onClose={this.viewHome} items={this.state.students} addNotes={this.updateStudentData}/>
+      );
     }
   }
 }

@@ -2,18 +2,19 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-const redis = require('redis');
+//const redis = require('redis');
 const PORT = process.env.PORT || 3000;
-import client from '../DB/redis.js';
+const client = require('../DB/redis.js');
 
-const numOfStudentsNotCalledYet;
+var numOfStudentsNotCalledYet;
 // Temp script to generate data for testing
 const seedData = require('../DB/dummyData.json');
 
 const app = express();
 app.use(express.static(path.join(__dirname, '../dist')));
 // For when/if we send data to client we can practice sending it in a body
-app.use(bodyParser({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 // So we don't have to specify a bunch of headers
 app.use(cors());
 

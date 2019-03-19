@@ -1,9 +1,8 @@
-import redis from 'redis';
+// const redis = require('redis');
+// const client = redis.createClient('6379', '127.0.0.1');
 
-const client = redis.createClient('3000', '127.0.0.1');
+// client.on('connect', function() {
+//   console.log('Connected to Redis');
+// });
 
-client.on('connect', function() {
-  console.log('Connected to Redis...');
-})
-
-export default client;
+// module.exports = client;
