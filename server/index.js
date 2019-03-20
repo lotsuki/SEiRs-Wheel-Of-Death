@@ -40,29 +40,41 @@ app.get('/students/leastpicked', function (req, res) {
 
 
 //ADD ENTIRE CLASS
-app.post('/class/submit', function(req, res) {
+// app.post('/class/submit', function(req, res) {
 
-//If called, can add lastCalled and notes prop
-  const studentNames = req.body;
+// //If called, can add lastCalled and notes prop
+//   const studentNames = req.body;
 
-  for (var i = 0; i < studentNames.length; i++) {
-    client.hmset(`${studentNames[i]}`, {
-      'id': `${i}`,
-      'fullname': studentNames[i],
-      'profilePic': 'somePic'
-    }, function(err, reply) {
-      if (err) { console.log('Could not add class: ', err); }
-      else { console.log('Class added successfully!'); }
-    });
+//   for (var i = 0; i < studentNames.length; i++) {
+//     client.hmset(`${studentNames[i]}`, {
+//       'id': `${i}`,
+//       'fullname': studentNames[i],
+//       'profilePic': 'somePic'
+//     }, function(err, reply) {
+//       if (err) { console.log('Could not add class: ', err); }
+//       else { console.log('Class added successfully!'); }
+//     });
 
-    client.rpush([`notCalledYet`, studentNames[i]], function(err, reply) {
-      if (err) { console.log('Could not add student names', err) }
-      else {
-        numOfStudentsNotCalledYet = reply;
-        console.log('Names added:', reply);
-      }
-    });
-  }
+//     client.rpush([`notCalledYet`, studentNames[i]], function(err, reply) {
+//       if (err) { console.log('Could not add student names', err) }
+//       else {
+//         numOfStudentsNotCalledYet = reply;
+//         console.log('Names added:', reply);
+//       }
+//     });
+//   }
+// });
+
+app.post('/students/submit', function(req, res) {
+  var name = req.body[0];
+  console.log(name);
+  client.hmset('student', {
+    'id': 1,
+    'name': name
+  }, function(err, reply) {
+     if (err) { console.log('Could not add class: ', err); }
+     else { console.log('Class added successfully!'); }
+  })
 });
 
 app.listen(PORT, () => {
