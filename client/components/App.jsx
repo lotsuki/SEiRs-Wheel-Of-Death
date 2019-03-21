@@ -29,7 +29,7 @@ class App extends React.Component {
   componentDidMount() {
     // fetch from (DB) list of students, sort data, then add to state
     fetch('/students')
-      .then(response => response.json())
+      .then(response => console.log(response.json(), 'mount object'))
       .then((data) => {
         data.forEach((student) => {
           student.name = (`${student.name[0]} ${student.name[1]}`);
@@ -48,12 +48,22 @@ class App extends React.Component {
   pickRandomStudent() {
     // Figure we can give John the option of just picking a random student along with picking the least called on students
     // Using this picRandomStudent could trigger the Wheel of Death animation maybe?
-    const max = this.state.students.length;
-    const index = Math.floor(Math.random() * (max - 1) + 1);
-    this.setState({
-      picked: this.state.students[index],
-      view: 'card',
-    });
+    // const max = this.state.students.length;
+    // const index = Math.floor(Math.random() * (max - 1) + 1);
+    // this.setState({
+    //   picked: this.state.students[index],
+    //   view: 'card',
+    // });
+
+    fetch('students/random')
+      .then(response => response.json())
+      .then(result => {
+        let student = {name: result['fullname'], photo: result['photo']};
+
+        this.setState({ picked: student, view: 'card' })
+      })
+      .catch(err => console.log('Could not pick random student: ', err));
+
   }
 
   leastPickedStudent() {
@@ -113,6 +123,7 @@ class App extends React.Component {
 
 
   render() {
+    console.log(this.state.picked)
     if (this.state.isLoading) {
       return (
         <Spinner />
@@ -126,6 +137,7 @@ class App extends React.Component {
         </div>
       );
     }
+    //TODO: add real data to student card
     if (this.state.view === 'card') {
       return (
       <div>

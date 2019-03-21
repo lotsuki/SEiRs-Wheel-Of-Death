@@ -6,7 +6,6 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 const client = require('../DB/redis.js');
 
-var numOfStudentsNotCalledYet;
 // Temp script to generate data for testing
 const seedData = require('../DB/dummyData.json');
 
@@ -18,6 +17,7 @@ app.use(bodyParser.json());
 // So we don't have to specify a bunch of headers
 app.use(cors());
 
+let numOfStudents;
 
 //GET ALL STUDENTS
 app.get('/students', function (req, res) {
@@ -27,54 +27,59 @@ app.get('/students', function (req, res) {
 });
 
 //GET RANDOM STUDENT
-app.get('/students/leastpicked', function (req, res) {
-  const randomNum = Math.floor(Math.random() * numOfStudentsNotCalledYet);
-  const randomName = client.lindex('notCalledYet', randomNum);
+app.get('/students/random', function (req, res) {
+  //TODO: when class can be submitted at once, change 3 to numOfStudents
+  let numOfStudentsNotCalledYet = 3;
+  let randomNum = Math.floor(Math.random() * numOfStudentsNotCalledYet);
 
-  client.hgetall(randomName, function(err, object) {
-    if (err) { console.log('Could not get random student: ', err); }
-    else { res.send(object); }
+  client.lindex('notCalledYet', randomNum, function(err, result) {
+    if (err) { console.log('Could not get student name ', err); }
+    else {
+      client.hgetall(result, function(err, object) {
+        if (err) { console.log('Could not get random student: ', err); }
+        else { res.status(200).send(object); }
+      });
+    }
   });
+
+
+  numOfStudentsNotCalledYet--;
+  //TODO: When list is empty, add all students names
+
+});
+
+
+//GET LEAST PICKED STUDENT
+app.get('/students/leastpicked', function (req, res) {
 
 });
 
 
 //ADD ENTIRE CLASS
-// app.post('/class/submit', function(req, res) {
-
-// //If called, can add lastCalled and notes prop
-//   const studentNames = req.body;
-
-//   for (var i = 0; i < studentNames.length; i++) {
-//     client.hmset(`${studentNames[i]}`, {
-//       'id': `${i}`,
-//       'fullname': studentNames[i],
-//       'profilePic': 'somePic'
-//     }, function(err, reply) {
-//       if (err) { console.log('Could not add class: ', err); }
-//       else { console.log('Class added successfully!'); }
-//     });
-
-//     client.rpush([`notCalledYet`, studentNames[i]], function(err, reply) {
-//       if (err) { console.log('Could not add student names', err) }
-//       else {
-//         numOfStudentsNotCalledYet = reply;
-//         console.log('Names added:', reply);
-//       }
-//     });
-//   }
-// });
 
 app.post('/students/submit', function(req, res) {
-  var name = req.body[0];
-  console.log(name);
-  client.hmset('student', {
-    'id': 1,
-    'name': name
-  }, function(err, reply) {
-     if (err) { console.log('Could not add class: ', err); }
-     else { console.log('Class added successfully!'); }
-  })
+  let students = req.body;
+  console.log(req.body)
+  for (let i = 0; i < students.length; i++) {
+    client.hmset(students[i].fullname, {
+      'id': i,
+      'fullname': students[i].fullname,
+      'photo': students[i].photo
+    }, function(err, reply) {
+         if (err) { console.log('Could not add class: ', err); }
+         else { res.status(200).send('Class added successfully!'); }
+       });
+
+    client.rpush(['notCalledYet', students[i].fullname], function(err, reply) {
+      if (err) { console.log('Could not push student names', err) }
+      else {
+        numOfStudents = reply;
+        res.status(200).send('Names added:', reply);
+      }
+    });
+  }
+ //BGSAVE
+
 });
 
 app.listen(PORT, () => {
