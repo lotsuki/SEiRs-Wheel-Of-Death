@@ -63,7 +63,6 @@ class App extends React.Component {
         this.setState({ picked: student, view: 'card' })
       })
       .catch(err => console.log('Could not pick random student: ', err));
-
   }
 
   leastPickedStudent() {

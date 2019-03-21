@@ -56,7 +56,6 @@ app.get('/students/leastpicked', function (req, res) {
 
 
 //ADD ENTIRE CLASS
-
 app.post('/students/submit', function(req, res) {
   let students = req.body;
   console.log(req.body)

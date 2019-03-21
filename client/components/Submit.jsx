@@ -31,6 +31,7 @@ class Submit extends React.Component {
 
   submitClass(e) {
     let data = [];
+
     for (let key in this.state.studentNames) {
       data.push({
         fullname: this.state.studentNames[key],
